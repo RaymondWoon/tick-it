@@ -1,14 +1,25 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { PropsWithChildren } from "react";
+
+export const CustomText = ({ children }: PropsWithChildren) => (
+  <Text>{children}</Text>
+);
 
 const Login = () => {
   return (
-    <View>
-      <Text>Login Page</Text>
+    <View style={styles.container}>
+      <CustomText>Welcome!</CustomText>
     </View>
   );
 };
 
 export default Login;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

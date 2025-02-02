@@ -1,4 +1,6 @@
-import * as Images from "./Images";
 import Themes from "./Colors";
+import * as Images from "./Images";
+import { spacingX, spacingY } from "./Spacing";
+import { fontSizes, sizes } from "./Sizes";
 
-export { Images, Themes };
+export { fontSizes, Images, spacingX, spacingY, sizes, Themes };

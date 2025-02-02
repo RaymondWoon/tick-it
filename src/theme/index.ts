@@ -1,3 +1,4 @@
 import * as Images from "./Images";
+import Themes from "./Colors";
 
-export { Images };
+export { Images, Themes };

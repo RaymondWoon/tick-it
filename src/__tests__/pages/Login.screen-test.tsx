@@ -4,12 +4,12 @@
 import { render, screen } from "@testing-library/react-native";
 
 /* Components */
-import LoginPage from "#pages/LoginPage";
+import LoginScreen from "#screens/Login.screen";
 
 describe("<LoginPage />", () => {
   /* Test the logo */
   it("Should render the logo", () => {
-    render(<LoginPage />);
+    render(<LoginScreen />);
 
     const logo = screen.getByRole("img");
     expect(logo).toBeOnTheScreen();
@@ -17,7 +17,7 @@ describe("<LoginPage />", () => {
 
   /* Test the application title */
   it("Should render the title of the app", () => {
-    render(<LoginPage />);
+    render(<LoginScreen />);
 
     const title = screen.getByText("Tick-it");
     expect(title).toBeTruthy();
@@ -25,7 +25,7 @@ describe("<LoginPage />", () => {
 
   /* Test the email input */
   it("Should render the email input", () => {
-    render(<LoginPage />);
+    render(<LoginScreen />);
 
     const emailInput = screen.getByPlaceholderText("Email");
     expect(emailInput).toBeTruthy();
@@ -33,7 +33,7 @@ describe("<LoginPage />", () => {
 
   /* Test the password input */
   it("Should render the password input", () => {
-    render(<LoginPage />);
+    render(<LoginScreen />);
 
     const passwordInput = screen.getByPlaceholderText("Password");
     expect(passwordInput).toBeTruthy();
@@ -41,7 +41,7 @@ describe("<LoginPage />", () => {
 
   /* Test the sign-in button */
   it("Should render the the sign-in button", () => {
-    render(<LoginPage />);
+    render(<LoginScreen />);
 
     const signinBtn = screen.getByText("Sign-in");
     expect(signinBtn).toBeTruthy();
@@ -49,7 +49,7 @@ describe("<LoginPage />", () => {
 
   /* Test the forget password button */
   it("Should render the forget password button", () => {
-    render(<LoginPage />);
+    render(<LoginScreen />);
 
     const forgetPwdBtn = screen.getByText("Forgot password?");
     expect(forgetPwdBtn).toBeTruthy();
@@ -57,7 +57,7 @@ describe("<LoginPage />", () => {
 
   /* Test the sign up button */
   it("Should render the sign up button", () => {
-    render(<LoginPage />);
+    render(<LoginScreen />);
 
     const signupBtn = screen.getByText("Don't have an account? Sign-up");
     expect(signupBtn).toBeTruthy();

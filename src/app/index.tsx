@@ -29,7 +29,7 @@
 /* Hooks */
 
 /* Components */
-import LoginPage from "#pages/LoginPage";
+import LoginScreen from "#screens/Login.screen";
 
 /* Types */
 
@@ -42,5 +42,5 @@ import LoginPage from "#pages/LoginPage";
 /* Misc */
 
 export default function Login() {
-  return <LoginPage />;
+  return <LoginScreen />;
 }

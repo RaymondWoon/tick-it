@@ -1,3 +1,5 @@
+export const white = "#FDFFFC";
+
 const Themes = {
   light: {
     dark: false,

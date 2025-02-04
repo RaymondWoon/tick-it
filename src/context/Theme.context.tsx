@@ -26,6 +26,10 @@ type IThemeContext = {
   loading: boolean;
 };
 
+/**
+ * ThemeContext to be accessible throughout the entire app
+ * Accessible via the useCustomTheme hook below
+ */
 const ThemeContext = createContext<IThemeContext>({
   theme: "light",
   setTheme: () => {},
@@ -36,10 +40,18 @@ type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
+/**
+ * Provides the variables and functions accessible via the context
+ * @param {children}  : all contained components
+ * @returns an theme wrapper for all children components
+ */
 export const CustomThemeProvider = ({ children }: ThemeProviderProps) => {
   /* obtain the system color scheme light/dark */
   const systemTheme = useColorScheme();
+
+  /* state variable and method for the app theme */
   const [theme, setTheme] = useState<ITheme>(systemTheme);
+  /* flag to determine if the app is waiting on a response */
   const [loading, setLoading] = useState(true);
 
   /* detect if the user had saved a custom theme and use it */
@@ -73,15 +85,17 @@ export const CustomThemeProvider = ({ children }: ThemeProviderProps) => {
 };
 
 /* define the useCustomTheme hook */
+/**
+ * The hook to provive access to the ThemeContext
+ * @returns variables and methods as defined by the context
+ */
 export const useCustomTheme = () => {
-  const context = useContext(ThemeContext);
-
-  // themes[context.theme].dark
+  const ctx = useContext(ThemeContext);
 
   return {
     isDark: false,
-    theme: context.theme,
-    setTheme: context.setTheme,
-    loading: context.loading,
+    theme: ctx.theme,
+    setTheme: ctx.setTheme,
+    loading: ctx.loading,
   };
 };

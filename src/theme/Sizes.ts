@@ -15,7 +15,9 @@ export const sizes = {
   _15: vScale(15),
   _17: vScale(17),
   _20: vScale(20),
+  _24: vScale(24),
   _30: vScale(30),
+  _32: vScale(32),
 };
 
 export const fontSizes = {

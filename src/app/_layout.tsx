@@ -1,5 +1,5 @@
 /* Core */
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
@@ -7,6 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 
 /* Context */
 import { CustomThemeProvider } from "#context/Theme.context";
+import { AuthContextProvider, useAuth } from "#context/Auth.context";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -16,7 +17,7 @@ export {
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+function InitialLayout() {
   const [loaded, error] = useFonts({
     ...Ionicons.font,
   });
@@ -37,10 +38,21 @@ export default function RootLayout() {
   }
 
   return (
-    <CustomThemeProvider>
+    <>
       <Stack>
         <Stack.Screen name="index" />
+        <Stack.Screen name="register" />
       </Stack>
+    </>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <CustomThemeProvider>
+      <AuthContextProvider>
+        <InitialLayout />
+      </AuthContextProvider>
     </CustomThemeProvider>
   );
 }

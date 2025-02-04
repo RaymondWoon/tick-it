@@ -11,6 +11,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import { useRouter } from "expo-router";
 
 /* Hooks */
 
@@ -75,9 +76,11 @@ const LoginScreen = () => {
   const { theme, setTheme } = useCustomTheme();
   const { colors } = useThemeColors();
 
+  const router = useRouter();
+
   return (
     <ScrollView style={{ backgroundColor: colors.color.background }}>
-      <Image source={LogoImg} style={styles.logo} role="img" alt="logo" />
+      <Image source={LogoImg} style={styles.logo} testID="logo" alt="logo" />
       <Text style={[styles.title, { color: colors.color.text }]}>Tick-it</Text>
       <TextInput placeholder="Email" />
       <TextInput placeholder="Password" />
@@ -87,9 +90,13 @@ const LoginScreen = () => {
       <Pressable>
         <Text>Forgot password?</Text>
       </Pressable>
-      <Pressable>
-        <Text>Don't have an account? Sign-up</Text>
-      </Pressable>
+      <View>
+        <Text>Don't have an account? </Text>
+        <Pressable onPress={() => router.push("register")}>
+          <Text testID="signup">Sign-up</Text>
+        </Pressable>
+      </View>
+
       {Themes.map((key, index) => (
         <React.Fragment key={key}>
           <ThemeRow onPress={() => setTheme(key)} checked={theme === key}>

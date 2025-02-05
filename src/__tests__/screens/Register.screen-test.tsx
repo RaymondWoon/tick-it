@@ -4,7 +4,6 @@
 import { render, screen } from "@testing-library/react-native";
 
 /* Components */
-//import RegisterScreen from "#screens/Register.screen";
 import Register from "#app/register";
 
 describe("<RegisterScreen />", () => {
@@ -70,5 +69,57 @@ describe("<RegisterScreen />", () => {
 
     const signupBtn = screen.getByText("Sign-in");
     expect(signupBtn).toBeTruthy();
+  });
+
+  /* Test the icons in the password input field and showPassword */
+  it("Should render the LockSimple icon when clicked one", () => {
+    render(<Register />);
+
+    const showPwdIcon = screen.getByTestId("togglePwdIcon");
+    const pwdIcon = screen.getByTestId(
+      "phosphor-react-native-lock-simple-thin"
+    );
+    //const confirmPwdIcon = screen.getByTestId("phosphor-react-native-lock-thin")
+    expect(showPwdIcon).toBeTruthy();
+    expect(pwdIcon).toBeTruthy();
+  });
+
+  /* Test the icon in the password input field after pressing 'Show password' */
+  // it("Should render the LockSimpleOpen icon when clicked one", async () => {
+  //   render(<Register />);
+
+  //   const user = userEvent.setup({
+  //     advanceTimers: jest.advanceTimersByTime,
+  //   });
+
+  //   jest.useFakeTimers();
+
+  //   const showPwdIcon = screen.getByTestId("showPwdIcon");
+
+  //   act(() => {
+  //     fireEvent.press(showPwdIcon);
+  //   });
+
+  //   const pwdIcon = screen.getByTestId(
+  //     "phosphor-react-native-lock-simple-open"
+  //   );
+
+  //   expect(pwdIcon).toBeTruthy();
+  // });
+
+  /* Test the icons in the confirm password input field and showConfirmPassword */
+  it("Should render the LockSimple icon when clicked one", () => {
+    render(<Register />);
+
+    const showPwdIcon = screen.getByTestId("toggleConfirmPwdIcon");
+    const pwdIcon = screen.getByTestId("phosphor-react-native-lock-thin");
+
+    expect(showPwdIcon).toBeTruthy();
+    expect(pwdIcon).toBeTruthy();
+  });
+
+  it("Renders Registration screen correctly", () => {
+    const tree = render(<Register />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });

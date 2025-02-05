@@ -1,17 +1,27 @@
 /* Core */
-import { StyleSheet, Text as RNText, TextStyle } from "react-native";
+import { StyleSheet, Text as RNText, TextProps, TextStyle } from "react-native";
 
 /* Hooks */
 import { useThemeColors } from "#hooks/useThemeColors";
 
 /* Types */
-import { ThemedTextProps } from "#types/Components";
+//import { ThemedTextProps } from "#types/Components";
 
 /* Constants */
 import { fontSizes, sizes } from "#theme";
 
 /* Misc */
 import { windowHeight as vScale } from "#utils/ScreenDimensions";
+
+type ThemedTextProps = {
+  size?: number;
+  color?: string;
+  type?: "default" | "title" | "semiBold" | "subtitle" | "link";
+  fontWeight?: TextStyle["fontWeight"];
+  children: any | null;
+  style?: TextStyle;
+  textProps?: TextProps;
+};
 
 const ThemedText = ({
   size,

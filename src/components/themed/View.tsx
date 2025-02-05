@@ -1,11 +1,18 @@
 /* Core */
-import { View as RNView, ViewProps } from "react-native";
+import { ReactNode } from "react";
+import { View as RNView, ViewStyle } from "react-native";
 
 /* Hooks */
 import { useThemeColors } from "#hooks/useThemeColors";
 
 /* Types */
-import { ThemedViewProps } from "#types/Components";
+//import { ThemedViewProps } from "#types/Components";
+
+type ThemedViewProps = {
+  style?: ViewStyle;
+  children: ReactNode;
+  bg?: string;
+};
 
 const ThemedView = ({ style, children, bg }: ThemedViewProps) => {
   const { colors } = useThemeColors();

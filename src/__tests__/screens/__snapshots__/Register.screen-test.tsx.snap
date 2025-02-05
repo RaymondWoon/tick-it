@@ -1,0 +1,695 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "flex": 1,
+        "marginTop": 54,
+      },
+      {
+        "backgroundColor": "#FDFFFC",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      [
+        {
+          "alignItems": "center",
+          "gap": 28.5,
+          "paddingHorizontal": 41.5,
+          "paddingTop": 38,
+        },
+        {
+          "paddingBottom": 0,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "height": 191,
+          },
+          {
+            "backgroundColor": "#FDFFFC",
+          },
+        ]
+      }
+    >
+      <Image
+        alt="logo"
+        source={
+          {
+            "testUri": "../../../assets/images/tick-it-logo.png",
+          }
+        }
+        style={
+          {
+            "backgroundColor": "transparent",
+            "height": 191,
+            "width": 191,
+          }
+        }
+        testID="logo"
+      />
+    </View>
+    <Text
+      style={
+        [
+          {
+            "color": "#011627",
+            "fontSize": 34.5,
+            "fontWeight": "400",
+          },
+          undefined,
+          {
+            "fontSize": 66.5,
+            "fontWeight": "bold",
+            "lineHeight": 61,
+          },
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ]
+      }
+    >
+      Tick-it
+    </Text>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderCurve": "continuous",
+            "borderRadius": 30.5,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "gap": 21,
+            "height": 84,
+            "justifyContent": "center",
+            "paddingHorizontal": 31.5,
+          },
+          {
+            "borderColor": "#CCD2D7",
+          },
+        ]
+      }
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight={49.5}
+        bbWidth={49.5}
+        className="user-thin__svg-icon-phosphor"
+        color="#AAB3BB"
+        fill="currentColor"
+        focusable={false}
+        height={49.5}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            [
+              undefined,
+              undefined,
+              {},
+            ],
+            {
+              "flex": 0,
+              "height": 49,
+              "width": 49,
+            },
+          ]
+        }
+        testID="phosphor-react-native-user-thin"
+        tintColor="#AAB3BB"
+        vbHeight={256}
+        vbWidth={256}
+        width={49.5}
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "type": 2,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        >
+          <RNSVGPath
+            d="M227.46 214c-16.52-28.56-43-48.06-73.68-55.09a68 68 0 1 0-51.56 0c-30.64 7-57.16 26.53-73.68 55.09a4 4 0 0 0 6.92 4C55 184.19 89.62 164 128 164s73 20.19 92.54 54a4 4 0 0 0 3.46 2 3.93 3.93 0 0 0 2-.54 4 4 0 0 0 1.46-5.46M68 96a60 60 0 1 1 60 60 60.07 60.07 0 0 1-60-60"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <TextInput
+        autoCapitalize="none"
+        icon={
+          <User
+            color="#AAB3BB"
+            size={49.5}
+            weight="thin"
+          />
+        }
+        onChangeText={[Function]}
+        placeholder="User name"
+        placeholderTextColor="#aaa"
+        style={
+          [
+            {
+              "color": "#011627",
+              "flex": 1,
+              "fontSize": 37.5,
+            },
+          ]
+        }
+        value=""
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderCurve": "continuous",
+            "borderRadius": 30.5,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "gap": 21,
+            "height": 84,
+            "justifyContent": "center",
+            "paddingHorizontal": 31.5,
+          },
+          {
+            "borderColor": "#CCD2D7",
+          },
+        ]
+      }
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight={49.5}
+        bbWidth={49.5}
+        className="at-thin__svg-icon-phosphor"
+        color="#AAB3BB"
+        fill="currentColor"
+        focusable={false}
+        height={49.5}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            [
+              undefined,
+              undefined,
+              {},
+            ],
+            {
+              "flex": 0,
+              "height": 49,
+              "width": 49,
+            },
+          ]
+        }
+        testID="phosphor-react-native-at-thin"
+        tintColor="#AAB3BB"
+        vbHeight={256}
+        vbWidth={256}
+        width={49.5}
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "type": 2,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        >
+          <RNSVGPath
+            d="M128 28a100 100 0 0 0 0 200c20.76 0 42.52-6.23 58.21-16.66a4 4 0 1 0-4.43-6.67C167.35 214.27 147.24 220 128 220a92 92 0 1 1 92-92c0 31.32-15 36-24 36s-24-4.68-24-36V88a4 4 0 0 0-8 0v14.75a44 44 0 1 0 2.82 45.94C171.46 163.58 181.66 172 196 172c20 0 32-16.45 32-44A100.11 100.11 0 0 0 128 28m0 136a36 36 0 1 1 36-36 36 36 0 0 1-36 36"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <TextInput
+        autoCapitalize="none"
+        icon={
+          <At
+            color="#AAB3BB"
+            size={49.5}
+            weight="thin"
+          />
+        }
+        onChangeText={[Function]}
+        placeholder="Email"
+        placeholderTextColor="#aaa"
+        style={
+          [
+            {
+              "color": "#011627",
+              "flex": 1,
+              "fontSize": 37.5,
+            },
+          ]
+        }
+        value=""
+      />
+    </View>
+    <View
+      style={
+        {
+          "flexDirection": "row",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderCurve": "continuous",
+                "borderRadius": 30.5,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "gap": 21,
+                "height": 84,
+                "justifyContent": "center",
+                "paddingHorizontal": 31.5,
+              },
+              {
+                "borderColor": "#CCD2D7",
+              },
+            ]
+          }
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={49.5}
+            bbWidth={49.5}
+            className="lock-simple-thin__svg-icon-phosphor"
+            color="#AAB3BB"
+            fill="currentColor"
+            focusable={false}
+            height={49.5}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  undefined,
+                  undefined,
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 49,
+                  "width": 49,
+                },
+              ]
+            }
+            testID="phosphor-react-native-lock-simple-thin"
+            tintColor="#AAB3BB"
+            vbHeight={256}
+            vbWidth={256}
+            width={49.5}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "type": 2,
+                }
+              }
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                d="M208 84h-36V56a44 44 0 0 0-88 0v28H48a12 12 0 0 0-12 12v112a12 12 0 0 0 12 12h160a12 12 0 0 0 12-12V96a12 12 0 0 0-12-12M92 56a36 36 0 0 1 72 0v28H92Zm120 152a4 4 0 0 1-4 4H48a4 4 0 0 1-4-4V96a4 4 0 0 1 4-4h160a4 4 0 0 1 4 4Z"
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <TextInput
+            autoCapitalize="none"
+            icon={
+              <LockSimple
+                color="#AAB3BB"
+                size={49.5}
+                weight="thin"
+              />
+            }
+            onChangeText={[Function]}
+            placeholder="Password"
+            placeholderTextColor="#aaa"
+            secureTextEntry={true}
+            style={
+              [
+                {
+                  "color": "#011627",
+                  "flex": 1,
+                  "fontSize": 37.5,
+                },
+              ]
+            }
+            value=""
+          />
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "justifyContent": "center",
+            "marginLeft": 21,
+          }
+        }
+        testID="togglePwdIcon"
+      >
+        <Text />
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "flexDirection": "row",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderCurve": "continuous",
+                "borderRadius": 30.5,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "gap": 21,
+                "height": 84,
+                "justifyContent": "center",
+                "paddingHorizontal": 31.5,
+              },
+              {
+                "borderColor": "#CCD2D7",
+              },
+            ]
+          }
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={49.5}
+            bbWidth={49.5}
+            className="lock-thin__svg-icon-phosphor"
+            color="#AAB3BB"
+            fill="currentColor"
+            focusable={false}
+            height={49.5}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  undefined,
+                  undefined,
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 49,
+                  "width": 49,
+                },
+              ]
+            }
+            testID="phosphor-react-native-lock-thin"
+            tintColor="#AAB3BB"
+            vbHeight={256}
+            vbWidth={256}
+            width={49.5}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "type": 2,
+                }
+              }
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                d="M208 84h-36V56a44 44 0 0 0-88 0v28H48a12 12 0 0 0-12 12v112a12 12 0 0 0 12 12h160a12 12 0 0 0 12-12V96a12 12 0 0 0-12-12M92 56a36 36 0 0 1 72 0v28H92Zm120 152a4 4 0 0 1-4 4H48a4 4 0 0 1-4-4V96a4 4 0 0 1 4-4h160a4 4 0 0 1 4 4Zm-76-56a8 8 0 1 1-8-8 8 8 0 0 1 8 8"
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <TextInput
+            autoCapitalize="none"
+            icon={
+              <Lock
+                color="#AAB3BB"
+                size={49.5}
+                weight="thin"
+              />
+            }
+            onChangeText={[Function]}
+            placeholder="Confirm password"
+            placeholderTextColor="#aaa"
+            secureTextEntry={true}
+            style={
+              [
+                {
+                  "color": "#011627",
+                  "flex": 1,
+                  "fontSize": 37.5,
+                },
+              ]
+            }
+            value=""
+          />
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "justifyContent": "center",
+            "marginLeft": 21,
+          }
+        }
+        testID="toggleConfirmPwdIcon"
+      >
+        <Text />
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "height": 91.5,
+          "justifyContent": "center",
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "borderCurve": "continuous",
+              "height": 91.5,
+              "justifyContent": "center",
+            },
+            false,
+            {
+              "backgroundColor": "#2EC4B6",
+              "borderRadius": 30.5,
+              "width": 976.5,
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 38,
+              },
+              {
+                "color": "#FCFCFD",
+              },
+              undefined,
+            ]
+          }
+        >
+          Create account
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#011627",
+              "fontSize": 34.5,
+              "fontWeight": "400",
+            },
+            {
+              "fontSize": 33.5,
+              "lineHeight": 46,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        Have an account? 
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "borderColor": "gray",
+              "borderRadius": 9.5,
+              "borderWidth": 1,
+              "justifyContent": "center",
+              "marginLeft": 10.5,
+              "padding": 4,
+              "textAlign": "center",
+              "textAlignVertical": "center",
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#011627",
+            }
+          }
+        >
+          Sign-in
+        </Text>
+      </Text>
+    </View>
+  </View>
+</View>
+`;

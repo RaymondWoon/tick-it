@@ -1,11 +1,18 @@
 /* Core */
-import { StyleSheet, TextInput, View } from "react-native";
+import {
+  StyleSheet,
+  TextInput as RNTextInput,
+  TextInputProps,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native";
 
 /* Hooks */
 import { useThemeColors } from "#hooks/useThemeColors";
 
 /* Types */
-import { ThemedInputProps } from "#types/Components";
+//import { ThemedInputProps } from "#types/Components";
 
 /* Constants */
 import { fontSizes, sizes, spacingX } from "#theme";
@@ -13,15 +20,25 @@ import { fontSizes, sizes, spacingX } from "#theme";
 /* Misc */
 import { windowHeight as vScale } from "#utils/ScreenDimensions";
 
+interface ThemedInputProps extends TextInputProps {
+  icon?: React.ReactNode;
+  containerStyle?: ViewStyle;
+  inputStyle?: TextStyle;
+  inputRef?: React.RefObject<RNTextInput>;
+}
+
 const ThemedInput = (props: ThemedInputProps) => {
   const { colors } = useThemeColors();
 
   return (
     <View style={[styles.container, { borderColor: colors.color.border }]}>
       {props.icon && props.icon}
-      <TextInput
-        style={[{ flex: 1, color: "#fff", fontSize: vScale(14) }]}
-        placeholderTextColor={colors.color.textSubtle}
+      <RNTextInput
+        style={[
+          { flex: 1, color: colors.color.text, fontSize: fontSizes.FONT18 },
+        ]}
+        // placeholderTextColor={colors.color.textSubtle}
+        placeholderTextColor="#aaa"
         ref={props.inputRef && props.inputRef}
         {...props}
       />
@@ -34,12 +51,11 @@ export default ThemedInput;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    height: vScale(54),
+    height: vScale(44),
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
-
-    borderRadius: sizes._17,
+    borderRadius: sizes._16,
     borderCurve: "continuous",
     paddingHorizontal: spacingX._15,
     gap: spacingX._10,

@@ -1,6 +1,9 @@
 /* Core */
+import { useContext, useState } from "react";
 import {
   Image,
+  KeyboardAvoidingView,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -10,18 +13,23 @@ import {
 } from "react-native";
 import React from "react";
 import * as Icons from "phosphor-react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useHeaderHeight } from "@react-navigation/elements";
 
 /* Hooks */
 
 /* Components */
-import ThemedInput from "#components/ThemedInput";
-import ThemedSafeAreaView from "#components/ThemedSafeAreaView";
-import ThemedText from "#components/ThemedText";
-import ThemedView from "#components/ThemedView";
+import ThemedScreenWrapper from "#components/themed/ScreenWrapper";
+import ThemedInput from "#components/themed/Input";
+import ThemedText from "#components/themed/Text";
+import ThemedView from "#components/themed/View";
+import ThemedButton from "#components/themed/Button";
+import LinkButton from "#components/LinkButton";
 
 /* Types */
 
 /* Context */
+import { useAuth } from "#context/Auth.context";
 
 /* Constants */
 import { sizes, spacingY } from "#theme";
@@ -41,15 +49,64 @@ import { useThemeColors } from "#hooks/useThemeColors";
 import { useCustomTheme, Themes } from "#context/Theme.context";
 
 const RegisterScreen = () => {
+  /* state to manage username */
+  const [username, setUsername] = useState<string>("");
+  /* state to manage email input */
+  const [email, setEmail] = useState<string>("");
+  /* state to manage password input */
+  const [password, setPassword] = useState<string>("");
+  /* state to manage confirmed password input */
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+
+  /* state to toggle password visibility */
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  /* state to toggle confirm password visibility */
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
+
+  /* Auth hook */
+  const auth = useAuth();
+
   const { colors } = useThemeColors();
+  const headerHeight = useHeaderHeight();
+
+  /* Handlers */
+  //const handleCreateAccount =
+
+  /* Toggle the visibility of the password input */
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  /* Toggle the visibility of the confirm password input */
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
+  const handleOnRegister = () => {
+    console.log("Handle register");
+  };
 
   return (
-    <ThemedSafeAreaView>
-      <ThemedView style={styles.logoContainer}>
-        <Image source={LogoImg} style={styles.logo} testID="logo" alt="logo" />
-      </ThemedView>
-      <View style={styles.formContainer}>
+    <ThemedScreenWrapper>
+      <KeyboardAvoidingView
+        keyboardVerticalOffset={headerHeight}
+        contentContainerStyle={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.formContainer}
+      >
+        <ThemedView style={styles.logoContainer}>
+          <Image
+            source={LogoImg}
+            style={styles.logo}
+            testID="logo"
+            alt="logo"
+          />
+        </ThemedView>
         <ThemedText type="title">Tick-it</ThemedText>
+
+        {/* Username input */}
         <ThemedInput
           icon={
             <Icons.User
@@ -59,22 +116,137 @@ const RegisterScreen = () => {
             />
           }
           placeholder="User name"
-        ></ThemedInput>
-      </View>
+          autoCapitalize="none"
+          value={username}
+          onChangeText={setUsername}
+        />
 
-      <TextInput placeholder="Email" />
-      <TextInput placeholder="Password" />
-      <TextInput placeholder="Confirm password" />
-      <TouchableOpacity>
-        <Text>Create account</Text>
-      </TouchableOpacity>
-      <View>
-        <Text>Have an account? </Text>
-        <Pressable>
-          <Text>Sign-in</Text>
-        </Pressable>
-      </View>
-    </ThemedSafeAreaView>
+        {/* Email input */}
+        <ThemedInput
+          icon={
+            <Icons.At
+              size={vScale(26)}
+              color={colors.color.textSubtle}
+              weight="thin"
+            />
+          }
+          placeholder="Email"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+        />
+
+        {/* Password input */}
+        <View style={styles.passwordInputContainer}>
+          <View style={{ flex: 1 }}>
+            {showPassword ? (
+              <ThemedInput
+                icon={
+                  <Icons.LockSimpleOpen
+                    size={vScale(26)}
+                    color={colors.color.textSubtle}
+                    weight="thin"
+                  />
+                }
+                placeholder="Password"
+                autoCapitalize="none"
+                secureTextEntry={!showPassword}
+                value={password}
+                onChangeText={setPassword}
+              />
+            ) : (
+              <ThemedInput
+                icon={
+                  <Icons.LockSimple
+                    size={vScale(26)}
+                    color={colors.color.textSubtle}
+                    weight="thin"
+                  />
+                }
+                placeholder="Password"
+                autoCapitalize="none"
+                secureTextEntry={!showPassword}
+                value={password}
+                onChangeText={setPassword}
+              />
+            )}
+          </View>
+          <View style={styles.iconContainer}>
+            <Ionicons
+              name={showPassword ? "eye-off-outline" : "eye-outline"}
+              size={hScale(24)}
+              color="#aaa"
+              onPress={toggleShowPassword}
+            />
+          </View>
+        </View>
+        {/* End password input */}
+
+        {/* Confirm password input */}
+        <View style={styles.passwordInputContainer}>
+          <View style={{ flex: 1 }}>
+            {showConfirmPassword ? (
+              <ThemedInput
+                icon={
+                  <Icons.LockOpen
+                    size={vScale(26)}
+                    color={colors.color.textSubtle}
+                    weight="thin"
+                  />
+                }
+                placeholder="Confirm password"
+                autoCapitalize="none"
+                secureTextEntry={!showConfirmPassword}
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+              />
+            ) : (
+              <ThemedInput
+                icon={
+                  <Icons.Lock
+                    size={vScale(26)}
+                    color={colors.color.textSubtle}
+                    weight="thin"
+                  />
+                }
+                placeholder="Confirm password"
+                autoCapitalize="none"
+                secureTextEntry={!showConfirmPassword}
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+              />
+            )}
+          </View>
+          <View style={styles.iconContainer}>
+            <Ionicons
+              name={showConfirmPassword ? "eye-off-outline" : "eye-outline"}
+              size={hScale(24)}
+              color="#aaa"
+              onPress={toggleShowConfirmPassword}
+            />
+          </View>
+        </View>
+        {/* End confirm password input */}
+
+        <ThemedButton
+          onPress={() =>
+            /* @ts-ignore */
+            auth.onRegister(username, email, password, confirmPassword)
+          }
+          size="medium"
+          bordered={true}
+        >
+          Create account
+        </ThemedButton>
+
+        <View style={{ flexDirection: "row" }}>
+          <ThemedText>Have an account? </ThemedText>
+          <LinkButton href="/">
+            <Text style={{ color: colors.color.text }}>Sign-in</Text>
+          </LinkButton>
+        </View>
+      </KeyboardAvoidingView>
+    </ThemedScreenWrapper>
   );
 };
 
@@ -84,14 +256,33 @@ const styles = StyleSheet.create({
   logoContainer: {
     height: vScale(100),
     alignItems: "center",
+    backgroundColor: "transparent",
   },
   logo: {
     width: vScale(100),
     height: vScale(100),
+    backgroundColor: "transparent",
   },
   formContainer: {
     alignItems: "center",
-    gap: spacingY._20,
+    gap: spacingY._15,
+    paddingTop: vScale(20),
+    paddingHorizontal: hScale(20),
+  },
+  passwordInputContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  iconContainer: {
+    marginLeft: hScale(10),
+    justifyContent: "center",
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: hScale(10),
+    borderRadius: sizes._10,
+    marginTop: vScale(10),
   },
   title: {
     fontSize: 20,

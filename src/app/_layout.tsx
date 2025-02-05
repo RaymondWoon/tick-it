@@ -41,7 +41,7 @@ function InitialLayout() {
     <>
       <Stack>
         <Stack.Screen name="index" />
-        <Stack.Screen name="register" />
+        <Stack.Screen name="register" options={{ headerShown: false }} />
       </Stack>
     </>
   );

@@ -13,7 +13,7 @@ export const sizes = {
   _10: vScale(10),
   _12: vScale(12),
   _15: vScale(15),
-  _17: vScale(17),
+  _16: vScale(16),
   _20: vScale(20),
   _24: vScale(24),
   _30: vScale(30),

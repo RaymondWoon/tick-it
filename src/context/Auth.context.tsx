@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+/* @ts-ignore */
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,

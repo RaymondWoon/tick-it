@@ -14,7 +14,7 @@ import {
 import React from "react";
 import * as Icons from "phosphor-react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useHeaderHeight } from "@react-navigation/elements";
+//import { useHeaderHeight } from "@react-navigation/elements";
 
 /* Hooks */
 
@@ -69,7 +69,7 @@ const RegisterScreen = () => {
   const auth = useAuth();
 
   const { colors } = useThemeColors();
-  const headerHeight = useHeaderHeight();
+  //const headerHeight = useHeaderHeight();
 
   /* Handlers */
   //const handleCreateAccount =
@@ -91,10 +91,8 @@ const RegisterScreen = () => {
   return (
     <ThemedScreenWrapper>
       <KeyboardAvoidingView
-        keyboardVerticalOffset={headerHeight}
-        contentContainerStyle={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.formContainer}
+        style={styles.container}
       >
         <ThemedView style={styles.logoContainer}>
           <Image
@@ -139,39 +137,22 @@ const RegisterScreen = () => {
         {/* Password input */}
         <View style={styles.passwordInputContainer}>
           <View style={{ flex: 1 }}>
-            {showPassword ? (
-              <ThemedInput
-                icon={
-                  <Icons.LockSimpleOpen
-                    size={vScale(26)}
-                    color={colors.color.textSubtle}
-                    weight="thin"
-                  />
-                }
-                placeholder="Password"
-                autoCapitalize="none"
-                secureTextEntry={!showPassword}
-                value={password}
-                onChangeText={setPassword}
-              />
-            ) : (
-              <ThemedInput
-                icon={
-                  <Icons.LockSimple
-                    size={vScale(26)}
-                    color={colors.color.textSubtle}
-                    weight="thin"
-                  />
-                }
-                placeholder="Password"
-                autoCapitalize="none"
-                secureTextEntry={!showPassword}
-                value={password}
-                onChangeText={setPassword}
-              />
-            )}
+            <ThemedInput
+              icon={
+                <Icons.LockSimple
+                  size={vScale(26)}
+                  color={colors.color.textSubtle}
+                  weight="thin"
+                />
+              }
+              placeholder="Password"
+              autoCapitalize="none"
+              secureTextEntry={!showPassword}
+              value={password}
+              onChangeText={setPassword}
+            />
           </View>
-          <View style={styles.iconContainer}>
+          <View style={styles.iconContainer} testID="togglePwdIcon">
             <Ionicons
               name={showPassword ? "eye-off-outline" : "eye-outline"}
               size={hScale(24)}
@@ -185,39 +166,22 @@ const RegisterScreen = () => {
         {/* Confirm password input */}
         <View style={styles.passwordInputContainer}>
           <View style={{ flex: 1 }}>
-            {showConfirmPassword ? (
-              <ThemedInput
-                icon={
-                  <Icons.LockOpen
-                    size={vScale(26)}
-                    color={colors.color.textSubtle}
-                    weight="thin"
-                  />
-                }
-                placeholder="Confirm password"
-                autoCapitalize="none"
-                secureTextEntry={!showConfirmPassword}
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-              />
-            ) : (
-              <ThemedInput
-                icon={
-                  <Icons.Lock
-                    size={vScale(26)}
-                    color={colors.color.textSubtle}
-                    weight="thin"
-                  />
-                }
-                placeholder="Confirm password"
-                autoCapitalize="none"
-                secureTextEntry={!showConfirmPassword}
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-              />
-            )}
+            <ThemedInput
+              icon={
+                <Icons.Lock
+                  size={vScale(26)}
+                  color={colors.color.textSubtle}
+                  weight="thin"
+                />
+              }
+              placeholder="Confirm password"
+              autoCapitalize="none"
+              secureTextEntry={!showConfirmPassword}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+            />
           </View>
-          <View style={styles.iconContainer}>
+          <View style={styles.iconContainer} testID="toggleConfirmPwdIcon">
             <Ionicons
               name={showConfirmPassword ? "eye-off-outline" : "eye-outline"}
               size={hScale(24)}
@@ -253,6 +217,12 @@ const RegisterScreen = () => {
 export default RegisterScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    gap: spacingY._15,
+    paddingTop: vScale(20),
+    paddingHorizontal: hScale(20),
+  },
   logoContainer: {
     height: vScale(100),
     alignItems: "center",
@@ -263,12 +233,7 @@ const styles = StyleSheet.create({
     height: vScale(100),
     backgroundColor: "transparent",
   },
-  formContainer: {
-    alignItems: "center",
-    gap: spacingY._15,
-    paddingTop: vScale(20),
-    paddingHorizontal: hScale(20),
-  },
+
   passwordInputContainer: {
     flexDirection: "row",
     justifyContent: "center",

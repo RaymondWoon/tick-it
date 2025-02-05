@@ -5,6 +5,8 @@ jest.mock("@react-native-async-storage/async-storage", () =>
   require("@react-native-async-storage/async-storage/jest/async-storage-mock")
 );
 
+jest.mock("expo-font");
+
 // include this section and the NativeAnimatedHelper section for mocking react-native-reanimated
 //jest.mock("react-native-reanimated", () => {
 //const Reanimated = require("react-native-reanimated/mock");

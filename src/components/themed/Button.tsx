@@ -75,7 +75,7 @@ const ThemedButton = ({
           style,
         ]}
       >
-        <Text style={[styles.text, { color: colors.color.btnText }, textStyle]}>
+        <Text style={[styles.text, { color: colors.color.btnText }]}>
           {children}
         </Text>
       </View>

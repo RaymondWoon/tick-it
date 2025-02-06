@@ -10,6 +10,8 @@ import {
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  updateProfile,
+  signOut,
   User,
 } from "@firebase/auth";
 
@@ -24,10 +26,12 @@ export interface AuthProps {
     password: string,
     confirmPassword: string
   ) => Promise<any>;
+  onLogout: () => Promise<void>;
   initialized?: boolean;
+  err: string[];
 }
 //onLogin?: (email: string, password: string) => void; //Promise<any>;
-//onLogout?: () => void; //Promise<void>;
+//
 //onPasswordReset?: (email: string) => void; //Promise<void>;
 
 const AuthContext = createContext<Partial<AuthProps>>({});
@@ -55,54 +59,62 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     setErr([]);
     setIsLoading(true);
 
+    /* Fields cannot be empty */
+    if (
+      username == "" ||
+      email == "" ||
+      password == "" ||
+      confirmPassword == ""
+    ) {
+      setErr([...err, "Please fill in all fields."]);
+      return;
+    }
+
+    /* minimum required password length is 6 */
+    if (password.length < 6 || confirmPassword.length < 6) {
+      setErr([...err, "Password must be at least 6 charaters"]);
+      return;
+    }
+
     /* Firebase does not handle password verification */
     if (password !== confirmPassword) {
       setErr([...err, "Passwords do not match."]);
       return;
     }
 
-    // console.log(username);
-    // console.log(email);
-    // console.log(password);
-    // console.log(confirmPassword);
-
-    // createUserWithEmailAndPassword(FIREBASE_AUTH, email, password)
-    //   .then((u) => {
-    //     setMobileUser(u);
-    //     setIsLoading(false);
-    //   })
-    //   .catch((e) => {
-    //     setIsLoading(false);
-    //     console.log(e);
-    //   });
-
     try {
-      console.log(username);
-      console.log(email);
-      console.log(password);
-      console.log(confirmPassword);
-
-      const user = await createUserWithEmailAndPassword(
+      /* create the user credentials */
+      const userCredential = await createUserWithEmailAndPassword(
         FIREBASE_AUTH,
         email,
         password
       );
 
-      //console.log(user);
+      setMobileUser(userCredential.user);
+      setIsLoading(false);
+
+      /* update the user display name */
+      updateProfile(userCredential.user, { displayName: username });
     } catch (error: any) {
-      return { error: true, msg: error.response.data.msg };
+      setErr([, , , err, error.response.data.msg]);
+      console.log(error.response.data.msg);
     }
   };
 
   const handleLogin = (email: string, password: string) => {};
 
-  const handleLogout = () => {};
+  const handleLogout = async () => {
+    setMobileUser(null);
+
+    await signOut(FIREBASE_AUTH);
+  };
 
   const handlePasswordReset = (email: string) => {};
 
   const value = {
     user: mobileUser,
     onRegister: handleRegister,
+    onLogout: handleLogout,
     err,
     initialized: initialized,
   };
@@ -119,8 +131,9 @@ export const useAuth = () => {
   return {
     user: ctx.user,
     onRegister: ctx.onRegister,
-
+    onLogout: ctx.onLogout,
     initialized: ctx.initialized,
+    err: ctx.err,
   };
 };
 

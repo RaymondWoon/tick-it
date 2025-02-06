@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+//import React from "react";
 import * as Icons from "phosphor-react-native";
 import { Ionicons } from "@expo/vector-icons";
 //import { useHeaderHeight } from "@react-navigation/elements";
@@ -20,9 +20,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 /* Components */
 import ThemedScreenWrapper from "#components/themed/ScreenWrapper";
-import ThemedInput from "#components/themed/Input";
-import ThemedText from "#components/themed/Text";
 import ThemedView from "#components/themed/View";
+import ThemedText from "#components/themed/Text";
+import ThemedInput from "#components/themed/Input";
 import ThemedButton from "#components/themed/Button";
 import LinkButton from "#components/LinkButton";
 import ErrorText from "#components/themed/ErrorText";
@@ -58,22 +58,16 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState<string>("");
   /* state to manage confirmed password input */
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-
   /* state to toggle password visibility */
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
   /* state to toggle confirm password visibility */
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
 
   /* Auth hook */
   const auth = useAuth();
-  //console.log(auth.err?.length);
+  /* Theme colors hook */
   const { colors } = useThemeColors();
-  //const headerHeight = useHeaderHeight();
-
-  /* Handlers */
-  //const handleCreateAccount =
 
   /* Toggle the visibility of the password input */
   const toggleShowPassword = () => {
@@ -132,6 +126,7 @@ const RegisterScreen = () => {
           value={email}
           onChangeText={setEmail}
         />
+
         {/* Password input */}
         <View style={styles.passwordInputContainer}>
           <View style={{ flex: 1 }}>
@@ -160,6 +155,7 @@ const RegisterScreen = () => {
           </View>
         </View>
         {/* End password input */}
+
         {/* Confirm password input */}
         <View style={styles.passwordInputContainer}>
           <View style={{ flex: 1 }}>
@@ -208,6 +204,7 @@ const RegisterScreen = () => {
         >
           <Text>Register</Text>
         </ThemedButton>
+
         <View style={{ flexDirection: "row" }}>
           <ThemedText>Have an account? </ThemedText>
           <LinkButton href="/">
@@ -238,7 +235,6 @@ const styles = StyleSheet.create({
     height: vScale(100),
     backgroundColor: "transparent",
   },
-
   passwordInputContainer: {
     flexDirection: "row",
     justifyContent: "center",
@@ -253,8 +249,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: hScale(10),
     borderRadius: sizes._10,
     marginTop: vScale(10),
-  },
-  title: {
-    fontSize: 20,
   },
 });

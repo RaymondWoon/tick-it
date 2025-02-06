@@ -13,6 +13,7 @@ import {
   updateProfile,
   signOut,
   User,
+  signInWithEmailAndPassword,
 } from "@firebase/auth";
 
 /* Misc */
@@ -26,7 +27,8 @@ export interface AuthProps {
     password: string,
     confirmPassword: string
   ) => Promise<any>;
-  onLogout: () => Promise<void>;
+  onLogin: (email: string, password: string) => Promise<any>;
+  onLogout: () => void;
   initialized?: boolean;
   err: string[];
 }
@@ -44,7 +46,10 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
-      setMobileUser(user);
+      if (user) {
+        setMobileUser(user);
+      }
+
       setIsLoading(false);
       setInitialized(true);
     });
@@ -56,7 +61,9 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     password: string,
     confirmPassword: string
   ) => {
+    /* clear any previous errors */
     setErr([]);
+    /* awaiting response */
     setIsLoading(true);
 
     /* Fields cannot be empty */
@@ -90,7 +97,9 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
         password
       );
 
+      /* valid registration, update the user state */
       setMobileUser(userCredential.user);
+      /* response received */
       setIsLoading(false);
 
       /* update the user display name */
@@ -101,12 +110,48 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const handleLogin = (email: string, password: string) => {};
+  const handleLogin = async (email: string, password: string) => {
+    /* clear any previous errors */
+    setErr([]);
+    /* awaiting response */
+    setIsLoading(true);
+
+    /* Fields cannot be empty */
+    if (email == "" || password == "") {
+      setErr([...err, "Please fill in all fields."]);
+      return;
+    }
+
+    try {
+      /* get the user credentials */
+      const userCredential = await signInWithEmailAndPassword(
+        FIREBASE_AUTH,
+        email,
+        password
+      );
+
+      /* valid login, update the user state */
+      setMobileUser(userCredential.user);
+      /* response received */
+      setIsLoading(false);
+    } catch (error: any) {
+      setErr([, , , err, error.response.data.msg]);
+      console.log(error.response.data.msg);
+    }
+  };
 
   const handleLogout = async () => {
-    setMobileUser(null);
+    //setMobileUser(null);
 
     await signOut(FIREBASE_AUTH);
+
+    setMobileUser(null);
+    // .then(() => {
+    //   setMobileUser(null);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   };
 
   const handlePasswordReset = (email: string) => {};
@@ -114,11 +159,12 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
   const value = {
     user: mobileUser,
     onRegister: handleRegister,
+    onLogin: handleLogin,
     onLogout: handleLogout,
     err,
     initialized: initialized,
   };
-  //onLogin: handleLogin,
+  //
   //onLogout: handleLogout,
   //onPasswordReset: handlePasswordReset,
 
@@ -131,6 +177,7 @@ export const useAuth = () => {
   return {
     user: ctx.user,
     onRegister: ctx.onRegister,
+    onLogin: ctx.onLogin,
     onLogout: ctx.onLogout,
     initialized: ctx.initialized,
     err: ctx.err,

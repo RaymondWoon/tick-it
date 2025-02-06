@@ -51,7 +51,7 @@ describe("<RegisterScreen />", () => {
   it("Should render the the register button", () => {
     render(<Register />);
 
-    const registerBtn = screen.getByText("Create account");
+    const registerBtn = screen.getByText("Register");
     expect(registerBtn).toBeTruthy();
   });
 

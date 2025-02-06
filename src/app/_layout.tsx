@@ -1,7 +1,7 @@
 /* Core */
 import React, { useEffect } from "react";
 import { ActivityIndicator, View } from "react-native";
-import { Slot, Stack, useRouter, useSegments } from "expo-router";
+import { Redirect, Slot, Stack, useRouter, useSegments } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -51,6 +51,7 @@ function InitialLayout() {
       router.replace("/(auth)/(tabs)");
     } else if (!user && inAuthGroup) {
       router.replace("/");
+      //<Redirect href={"/"} />;
     }
   }, [initialized, user]);
 
@@ -64,6 +65,7 @@ function InitialLayout() {
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
           <Stack.Screen name="register" />
+          <Stack.Screen name="(auth)/(tabs)" />
         </Stack>
       ) : (
         <View style={{ flex: 1, justifyContent: "center" }}>

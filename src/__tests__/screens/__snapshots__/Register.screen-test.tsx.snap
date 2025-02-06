@@ -556,6 +556,13 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
       </View>
     </View>
     <View
+      style={
+        {
+          "display": "flex",
+        }
+      }
+    />
+    <View
       accessibilityState={
         {
           "busy": undefined,
@@ -621,11 +628,12 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
               {
                 "color": "#FCFCFD",
               },
-              undefined,
             ]
           }
         >
-          Create account
+          <Text>
+            Register
+          </Text>
         </Text>
       </View>
     </View>

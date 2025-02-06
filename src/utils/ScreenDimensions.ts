@@ -7,6 +7,11 @@ export const SCREEN_WIDTH = Dimensions.get("window").width;
 export const IsIOS = Platform.OS === "ios";
 export const IsAndroid = Platform.OS === "android";
 
+// const wHeight = Dimensions.get("screen").height;
+// const wWidth = Dimensions.get("screen").width;
+// console.log("Width -> ", wWidth);
+// console.log("Height -> ", wHeight);
+
 /* Samsung S21FE: width: 360, height: 699 */
 export const windowHeight = (height: DimensionValue): number => {
   if (!height) {

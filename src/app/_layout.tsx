@@ -1,6 +1,7 @@
 /* Core */
 import React, { useEffect } from "react";
-import { Stack } from "expo-router";
+import { ActivityIndicator, View } from "react-native";
+import { Slot, Stack, useRouter, useSegments } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -10,7 +11,7 @@ import { CustomThemeProvider } from "#context/Theme.context";
 import { AuthContextProvider, useAuth } from "#context/Auth.context";
 
 export {
-  // Catch any errors thrown by the Layout component.
+  //Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
 
@@ -18,6 +19,11 @@ export {
 SplashScreen.preventAutoHideAsync();
 
 function InitialLayout() {
+  const { user, initialized } = useAuth();
+
+  const router = useRouter();
+  const segments = useSegments();
+
   const [loaded, error] = useFonts({
     ...Ionicons.font,
   });
@@ -33,26 +39,49 @@ function InitialLayout() {
     }
   }, [loaded]);
 
-  if (!loaded) {
-    return null;
+  console.log("Root Layout: initialized -> ", initialized);
+  console.log("Root Layout: user -> ", user);
+
+  useEffect(() => {
+    if (!initialized) return;
+
+    const inAuthGroup = segments[0] === "(auth)";
+    console.log("Root Layout: inAuthGroup -> ", inAuthGroup);
+    if (user && !inAuthGroup) {
+      router.replace("/(auth)/(tabs)");
+    } else if (!user && inAuthGroup) {
+      router.replace("/");
+    }
+  }, [initialized, user]);
+
+  if (!loaded || !initialized) {
+    return <ActivityIndicator size={"large"} />;
   }
 
   return (
     <>
-      <Stack>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="register" options={{ headerShown: false }} />
-      </Stack>
+      {initialized ? (
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="register" />
+        </Stack>
+      ) : (
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <ActivityIndicator size="large" color="blue" />
+        </View>
+      )}
     </>
   );
 }
 
-export default function RootLayout() {
+const RootLayout = () => {
   return (
-    <CustomThemeProvider>
-      <AuthContextProvider>
+    <AuthContextProvider>
+      <CustomThemeProvider>
         <InitialLayout />
-      </AuthContextProvider>
-    </CustomThemeProvider>
+      </CustomThemeProvider>
+    </AuthContextProvider>
   );
-}
+};
+
+export default RootLayout;

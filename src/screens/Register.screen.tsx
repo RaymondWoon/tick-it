@@ -25,6 +25,7 @@ import ThemedText from "#components/themed/Text";
 import ThemedView from "#components/themed/View";
 import ThemedButton from "#components/themed/Button";
 import LinkButton from "#components/LinkButton";
+import ErrorText from "#components/themed/ErrorText";
 
 /* Types */
 
@@ -67,7 +68,7 @@ const RegisterScreen = () => {
 
   /* Auth hook */
   const auth = useAuth();
-
+  //console.log(auth.err?.length);
   const { colors } = useThemeColors();
   //const headerHeight = useHeaderHeight();
 
@@ -103,7 +104,6 @@ const RegisterScreen = () => {
           />
         </ThemedView>
         <ThemedText type="title">Tick-it</ThemedText>
-
         {/* Username input */}
         <ThemedInput
           icon={
@@ -118,7 +118,6 @@ const RegisterScreen = () => {
           value={username}
           onChangeText={setUsername}
         />
-
         {/* Email input */}
         <ThemedInput
           icon={
@@ -133,7 +132,6 @@ const RegisterScreen = () => {
           value={email}
           onChangeText={setEmail}
         />
-
         {/* Password input */}
         <View style={styles.passwordInputContainer}>
           <View style={{ flex: 1 }}>
@@ -162,7 +160,6 @@ const RegisterScreen = () => {
           </View>
         </View>
         {/* End password input */}
-
         {/* Confirm password input */}
         <View style={styles.passwordInputContainer}>
           <View style={{ flex: 1 }}>
@@ -192,6 +189,15 @@ const RegisterScreen = () => {
         </View>
         {/* End confirm password input */}
 
+        {/* Errors */}
+        <View
+          style={
+            auth.err?.length == 0 ? { display: "none" } : { display: "flex" }
+          }
+        >
+          {auth.err && <ErrorText>{auth.err}</ErrorText>}
+        </View>
+
         <ThemedButton
           onPress={() =>
             /* @ts-ignore */
@@ -200,9 +206,8 @@ const RegisterScreen = () => {
           size="medium"
           bordered={true}
         >
-          Create account
+          <Text>Register</Text>
         </ThemedButton>
-
         <View style={{ flexDirection: "row" }}>
           <ThemedText>Have an account? </ThemedText>
           <LinkButton href="/">

@@ -180,10 +180,10 @@ export function AuthContextProvider(props: { children: ReactNode }) {
 
     try {
       const response = await login(email, password);
-
+      console.log(response);
       if (response) {
         if (response.user) {
-          /* Successful registration, update the user state */
+          /* Successful sign-in, update the user state */
           setUser(response.user);
           /* response received */
           setIsLoading(false);
@@ -202,8 +202,15 @@ export function AuthContextProvider(props: { children: ReactNode }) {
         return undefined;
       }
     } catch (error: any) {
+      if (
+        error.code === "auth/invalid-credential" ||
+        error.code === "auth/invalid-email"
+      ) {
+        setErr([...err, "Invalid credentials"]);
+      }
+
       setErr([...err, error.response.data.msg]);
-      console.error("~handleSignIn error~ -> ", error.response.data.msg);
+      console.log("~handleSignIn error~ -> ", error.response.data.msg);
       return undefined;
     }
   };
@@ -283,7 +290,7 @@ export function AuthContextProvider(props: { children: ReactNode }) {
       setErr([...err, error.response.data.msg]);
       /* response received */
       setIsLoading(false);
-      console.error("~handleSignUp error~ -> ", error.response.data.msg);
+      console.log("~handleSignUp error~ -> ", error.response.data.msg);
       return undefined;
     }
   };
@@ -293,7 +300,7 @@ export function AuthContextProvider(props: { children: ReactNode }) {
       await logout();
       setUser(null);
     } catch (error) {
-      console.error("~handleSignOut error~ -> ", error);
+      console.log("~handleSignOut error~ -> ", error);
     }
   };
 

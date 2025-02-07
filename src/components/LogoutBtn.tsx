@@ -4,18 +4,20 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
 /* Context */
-import { useAuth } from "#context/Auth.context";
+//import { useAuth } from "#context/Auth.context";
+import { useAuth } from "#store/Auth.context";
 
 /* Misc */
 import { windowWidth as hScale } from "#utils/ScreenDimensions";
 
 const LogoutBtn = () => {
-  const { onLogout } = useAuth();
+  const { signOut } = useAuth();
 
   const router = useRouter();
 
   const handleLogout = async () => {
-    await onLogout();
+    console.log("Logout");
+    await signOut();
 
     router.replace("/");
   };

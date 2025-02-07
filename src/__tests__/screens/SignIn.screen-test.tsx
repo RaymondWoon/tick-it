@@ -18,14 +18,12 @@ import {
 // } from "expo-router/testing-library";
 
 /* Components */
-//import LoginScreen from "#screens/Login.screen";
-import Login from "#app";
-import Register from "#app/register";
+import SignIn from "#app/sign-in";
 
-describe("<LoginScreen />", () => {
+describe("<SignInScreen />", () => {
   /* Test the logo */
   it("Should render the logo", () => {
-    render(<Login />);
+    render(<SignIn />);
 
     const logo = screen.getByTestId("logo");
     expect(logo).toBeTruthy();
@@ -33,7 +31,7 @@ describe("<LoginScreen />", () => {
 
   /* Test the application title */
   it("Should render the title of the app", () => {
-    render(<Login />);
+    render(<SignIn />);
 
     const title = screen.getByText("Tick-it");
     expect(title).toBeTruthy();
@@ -41,7 +39,7 @@ describe("<LoginScreen />", () => {
 
   /* Test the email input */
   it("Should render the email input", () => {
-    render(<Login />);
+    render(<SignIn />);
 
     const emailInput = screen.getByPlaceholderText("Email");
     expect(emailInput).toBeTruthy();
@@ -49,7 +47,7 @@ describe("<LoginScreen />", () => {
 
   /* Test the password input */
   it("Should render the password input", () => {
-    render(<Login />);
+    render(<SignIn />);
 
     const passwordInput = screen.getByPlaceholderText("Password");
     expect(passwordInput).toBeTruthy();
@@ -57,15 +55,15 @@ describe("<LoginScreen />", () => {
 
   /* Test the sign-in button */
   it("Should render the the sign-in button", () => {
-    render(<Login />);
+    render(<SignIn />);
 
-    const signinBtn = screen.getByText("Sign-in");
+    const signinBtn = screen.getByText("Sign In");
     expect(signinBtn).toBeTruthy();
   });
 
   /* Test the forget password button */
   it("Should render the forget password button", () => {
-    render(<Login />);
+    render(<SignIn />);
 
     const forgetPwdBtn = screen.getByText("Forgot password?");
     expect(forgetPwdBtn).toBeTruthy();
@@ -73,7 +71,7 @@ describe("<LoginScreen />", () => {
 
   /* Test the sign up text */
   it("Should render the sign up button", () => {
-    render(<Login />);
+    render(<SignIn />);
 
     const signupBtn = screen.getByText("Don't have an account? ");
     expect(signupBtn).toBeTruthy();
@@ -81,9 +79,9 @@ describe("<LoginScreen />", () => {
 
   /* Test the sign-up button */
   it("Should render the sign up button", () => {
-    render(<Login />);
+    render(<SignIn />);
 
-    const signupBtn = screen.getByText("Sign-up");
+    const signupBtn = screen.getByText("Sign Up");
     expect(signupBtn).toBeTruthy();
   });
 
@@ -115,4 +113,10 @@ describe("<LoginScreen />", () => {
 
   //expect(screen).toHavePathname("/register");
   //});
+
+  /* Snapshot */
+  it("Renders SignIn screen correctly", () => {
+    const tree = render(<SignIn />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

@@ -2,7 +2,8 @@ import { View, Text } from "react-native";
 import React from "react";
 
 /* Context */
-import { useAuth } from "#context/Auth.context";
+//import { useAuth } from "#context/Auth.context";
+import { useAuth } from "#store/Auth.context";
 
 const HomeScreen = () => {
   const { user } = useAuth();

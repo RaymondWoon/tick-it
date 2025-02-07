@@ -4,12 +4,12 @@
 import { render, screen } from "@testing-library/react-native";
 
 /* Components */
-import Register from "#app/register";
+import SignUp from "#app/sign-up";
 
-describe("<RegisterScreen />", () => {
+describe("<SignUpScreen />", () => {
   /* Test the logo */
   it("Should render the logo", () => {
-    render(<Register />);
+    render(<SignUp />);
 
     const logo = screen.getByTestId("logo");
     expect(logo).toBeTruthy();
@@ -17,7 +17,7 @@ describe("<RegisterScreen />", () => {
 
   /* Test the application title */
   it("Should render the title of the app", () => {
-    render(<Register />);
+    render(<SignUp />);
 
     const title = screen.getByText("Tick-it");
     expect(title).toBeTruthy();
@@ -25,7 +25,7 @@ describe("<RegisterScreen />", () => {
 
   /* Test the email input */
   it("Should render the email input", () => {
-    render(<Register />);
+    render(<SignUp />);
 
     const emailInput = screen.getByPlaceholderText("Email");
     expect(emailInput).toBeTruthy();
@@ -33,7 +33,7 @@ describe("<RegisterScreen />", () => {
 
   /* Test the password input */
   it("Should render the password input", () => {
-    render(<Register />);
+    render(<SignUp />);
 
     const passwordInput = screen.getByPlaceholderText("Password");
     expect(passwordInput).toBeTruthy();
@@ -41,7 +41,7 @@ describe("<RegisterScreen />", () => {
 
   /* Test the confirm password input */
   it("Should render the confirm password input", () => {
-    render(<Register />);
+    render(<SignUp />);
 
     const passwordInput = screen.getByPlaceholderText("Confirm password");
     expect(passwordInput).toBeTruthy();
@@ -49,31 +49,31 @@ describe("<RegisterScreen />", () => {
 
   /* Test the register button */
   it("Should render the the register button", () => {
-    render(<Register />);
+    render(<SignUp />);
 
-    const registerBtn = screen.getByText("Register");
+    const registerBtn = screen.getByText("Sign Up");
     expect(registerBtn).toBeTruthy();
   });
 
   /* Test the sign-in text */
   it("Should render the sign up button description", () => {
-    render(<Register />);
+    render(<SignUp />);
 
     const signupBtn = screen.getByText("Have an account? ");
     expect(signupBtn).toBeTruthy();
   });
 
   /* Test the sign-in button */
-  it("Should render the sign up button description", () => {
-    render(<Register />);
+  it("Should render the sign in button description", () => {
+    render(<SignUp />);
 
-    const signupBtn = screen.getByText("Sign-in");
-    expect(signupBtn).toBeTruthy();
+    const signinBtn = screen.getByText("Sign In");
+    expect(signinBtn).toBeTruthy();
   });
 
   /* Test the icons in the password input field and showPassword */
-  it("Should render the LockSimple icon when clicked one", () => {
-    render(<Register />);
+  it("Should render the LockSimple icon", () => {
+    render(<SignUp />);
 
     const showPwdIcon = screen.getByTestId("togglePwdIcon");
     const pwdIcon = screen.getByTestId(
@@ -109,7 +109,7 @@ describe("<RegisterScreen />", () => {
 
   /* Test the icons in the confirm password input field and showConfirmPassword */
   it("Should render the LockSimple icon when clicked one", () => {
-    render(<Register />);
+    render(<SignUp />);
 
     const showPwdIcon = screen.getByTestId("toggleConfirmPwdIcon");
     const pwdIcon = screen.getByTestId("phosphor-react-native-lock-thin");
@@ -118,8 +118,9 @@ describe("<RegisterScreen />", () => {
     expect(pwdIcon).toBeTruthy();
   });
 
-  it("Renders Registration screen correctly", () => {
-    const tree = render(<Register />).toJSON();
+  /* Snapshot */
+  it("Renders SignUp screen correctly", () => {
+    const tree = render(<SignUp />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

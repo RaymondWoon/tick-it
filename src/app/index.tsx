@@ -1,46 +1,15 @@
-// import { StyleSheet, Text, View } from "react-native";
-// import React, { PropsWithChildren } from "react";
+/* src/app/index.tsx */
 
-// export const CustomText = ({ children }: PropsWithChildren) => (
-//   <Text>{children}</Text>
-// );
-
-// const Login = () => {
-//   return (
-//     <View style={styles.container}>
-//       <CustomText>Welcome!</CustomText>
-//     </View>
-//   );
-// };
-
-// export default Login;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-// });
+/**
+ * App folder must have an index.tsx file.
+ * This just re-directs to the entry page of the app - sign-in
+ */
 
 /* Core */
+import { Redirect } from "expo-router";
 
-/* Hooks */
+const index = () => {
+  return <Redirect href={"/sign-in"} />;
+};
 
-/* Components */
-import LoginScreen from "#screens/Login.screen";
-
-/* Types */
-
-/* Context */
-
-/* Constants */
-
-/* Styles */
-
-/* Misc */
-
-export default function Login() {
-  return <LoginScreen />;
-}
+export default index;

@@ -233,7 +233,7 @@ const SignInScreen = () => {
           </LinkButton>
         </View>
 
-        <ScrollView style={{ backgroundColor: colors.color.background }}>
+        {/* <ScrollView style={{ backgroundColor: colors.color.background }}>
           <Pressable>
             <Text>Forgot password?</Text>
           </Pressable>
@@ -246,7 +246,7 @@ const SignInScreen = () => {
               {index !== Themes.length - 1 && <Border />}
             </React.Fragment>
           ))}
-        </ScrollView>
+        </ScrollView> */}
       </KeyboardAvoidingView>
     </ThemedScreenWrapper>
   );

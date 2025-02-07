@@ -48,7 +48,7 @@ export async function login(
 
     return { user: userCredential.user };
   } catch (error) {
-    console.error("~Service login error~ -> ", error);
+    console.log("~Service login error~ -> ", error);
     throw error;
   }
 }
@@ -62,7 +62,7 @@ export async function logout(): Promise<void> {
   try {
     await signOut(FIREBASE_AUTH);
   } catch (error) {
-    console.error("~Service logout error~ -> ", error);
+    console.log("~Service logout error~ -> ", error);
     throw error;
   }
 }
@@ -91,7 +91,7 @@ export async function register(
 
     return { user: userCredential.user };
   } catch (error) {
-    console.error("~Service registration error~ -> ", error);
+    console.log("~Service registration error~ -> ", error);
     throw error;
   }
 }

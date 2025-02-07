@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
+exports[`<SignInScreen /> Renders SignIn screen correctly 1`] = `
 <View
   style={
     [
@@ -109,109 +109,6 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
         align="xMidYMid"
         bbHeight={49.5}
         bbWidth={49.5}
-        className="user-thin__svg-icon-phosphor"
-        color="#AAB3BB"
-        fill="currentColor"
-        focusable={false}
-        height={49.5}
-        meetOrSlice={0}
-        minX={0}
-        minY={0}
-        style={
-          [
-            {
-              "backgroundColor": "transparent",
-              "borderWidth": 0,
-            },
-            [
-              undefined,
-              undefined,
-              {},
-            ],
-            {
-              "flex": 0,
-              "height": 49,
-              "width": 49,
-            },
-          ]
-        }
-        testID="phosphor-react-native-user-thin"
-        tintColor="#AAB3BB"
-        vbHeight={256}
-        vbWidth={256}
-        width={49.5}
-      >
-        <RNSVGGroup
-          fill={
-            {
-              "type": 2,
-            }
-          }
-          propList={
-            [
-              "fill",
-            ]
-          }
-        >
-          <RNSVGPath
-            d="M227.46 214c-16.52-28.56-43-48.06-73.68-55.09a68 68 0 1 0-51.56 0c-30.64 7-57.16 26.53-73.68 55.09a4 4 0 0 0 6.92 4C55 184.19 89.62 164 128 164s73 20.19 92.54 54a4 4 0 0 0 3.46 2 3.93 3.93 0 0 0 2-.54 4 4 0 0 0 1.46-5.46M68 96a60 60 0 1 1 60 60 60.07 60.07 0 0 1-60-60"
-            fill={
-              {
-                "payload": 4278190080,
-                "type": 0,
-              }
-            }
-          />
-        </RNSVGGroup>
-      </RNSVGSvgView>
-      <TextInput
-        autoCapitalize="none"
-        icon={
-          <User
-            color="#AAB3BB"
-            size={49.5}
-            weight="thin"
-          />
-        }
-        onChangeText={[Function]}
-        placeholder="User name"
-        placeholderTextColor="#aaa"
-        style={
-          [
-            {
-              "color": "#011627",
-              "flex": 1,
-              "fontSize": 37.5,
-            },
-          ]
-        }
-        value=""
-      />
-    </View>
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "borderCurve": "continuous",
-            "borderRadius": 30.5,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "gap": 21,
-            "height": 84,
-            "justifyContent": "center",
-            "paddingHorizontal": 31.5,
-          },
-          {
-            "borderColor": "#CCD2D7",
-          },
-        ]
-      }
-    >
-      <RNSVGSvgView
-        align="xMidYMid"
-        bbHeight={49.5}
-        bbWidth={49.5}
         className="at-thin__svg-icon-phosphor"
         color="#AAB3BB"
         fill="currentColor"
@@ -276,6 +173,7 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
             weight="thin"
           />
         }
+        keyboardType="email-address"
         onChangeText={[Function]}
         placeholder="Email"
         placeholderTextColor="#aaa"
@@ -288,6 +186,7 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
             },
           ]
         }
+        textContentType="emailAddress"
         value=""
       />
     </View>
@@ -407,6 +306,7 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
                 },
               ]
             }
+            textContentType="password"
             value=""
           />
         </View>
@@ -418,139 +318,6 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
             "marginLeft": 21,
           }
         }
-        testID="togglePwdIcon"
-      >
-        <Text />
-      </View>
-    </View>
-    <View
-      style={
-        {
-          "flexDirection": "row",
-          "justifyContent": "center",
-        }
-      }
-    >
-      <View
-        style={
-          {
-            "flex": 1,
-          }
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "borderCurve": "continuous",
-                "borderRadius": 30.5,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "gap": 21,
-                "height": 84,
-                "justifyContent": "center",
-                "paddingHorizontal": 31.5,
-              },
-              {
-                "borderColor": "#CCD2D7",
-              },
-            ]
-          }
-        >
-          <RNSVGSvgView
-            align="xMidYMid"
-            bbHeight={49.5}
-            bbWidth={49.5}
-            className="lock-thin__svg-icon-phosphor"
-            color="#AAB3BB"
-            fill="currentColor"
-            focusable={false}
-            height={49.5}
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
-            style={
-              [
-                {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                [
-                  undefined,
-                  undefined,
-                  {},
-                ],
-                {
-                  "flex": 0,
-                  "height": 49,
-                  "width": 49,
-                },
-              ]
-            }
-            testID="phosphor-react-native-lock-thin"
-            tintColor="#AAB3BB"
-            vbHeight={256}
-            vbWidth={256}
-            width={49.5}
-          >
-            <RNSVGGroup
-              fill={
-                {
-                  "type": 2,
-                }
-              }
-              propList={
-                [
-                  "fill",
-                ]
-              }
-            >
-              <RNSVGPath
-                d="M208 84h-36V56a44 44 0 0 0-88 0v28H48a12 12 0 0 0-12 12v112a12 12 0 0 0 12 12h160a12 12 0 0 0 12-12V96a12 12 0 0 0-12-12M92 56a36 36 0 0 1 72 0v28H92Zm120 152a4 4 0 0 1-4 4H48a4 4 0 0 1-4-4V96a4 4 0 0 1 4-4h160a4 4 0 0 1 4 4Zm-76-56a8 8 0 1 1-8-8 8 8 0 0 1 8 8"
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
-                }
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
-          <TextInput
-            autoCapitalize="none"
-            icon={
-              <Lock
-                color="#AAB3BB"
-                size={49.5}
-                weight="thin"
-              />
-            }
-            onChangeText={[Function]}
-            placeholder="Confirm password"
-            placeholderTextColor="#aaa"
-            secureTextEntry={true}
-            style={
-              [
-                {
-                  "color": "#011627",
-                  "flex": 1,
-                  "fontSize": 37.5,
-                },
-              ]
-            }
-            value=""
-          />
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "justifyContent": "center",
-            "marginLeft": 21,
-          }
-        }
-        testID="toggleConfirmPwdIcon"
       >
         <Text />
       </View>
@@ -632,7 +399,7 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
           }
         >
           <Text>
-            Register
+            Sign In
           </Text>
         </Text>
       </View>
@@ -664,10 +431,10 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
           ]
         }
       >
-        Have an account? 
+        Don't have an account? 
       </Text>
       <Text
-        href="/"
+        href="/sign-up"
         onPress={[Function]}
         role="link"
         style={
@@ -694,10 +461,294 @@ exports[`<RegisterScreen /> Renders Registration screen correctly 1`] = `
             }
           }
         >
-          Sign-in
+          Sign Up
         </Text>
       </Text>
     </View>
+    <RCTScrollView
+      style={
+        {
+          "backgroundColor": "#FDFFFC",
+        }
+      }
+    >
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+        >
+          <Text>
+            Forgot password?
+          </Text>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginVertical": 10,
+              "opacity": 1,
+              "paddingVertical": 10,
+            }
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 20,
+                  "borderWidth": 1,
+                  "height": 20,
+                  "marginRight": 10,
+                  "width": 20,
+                },
+                {
+                  "borderColor": "#011627",
+                },
+                {
+                  "backgroundColor": "#2EC4B6",
+                  "borderColor": "#2EC4B6",
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              [
+                {
+                  "fontSize": 20,
+                },
+                {
+                  "color": "#011627",
+                },
+              ]
+            }
+          >
+            light
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "red",
+                "flex": 1,
+                "height": 1,
+              },
+              {
+                "backgroundColor": "#CCD2D7",
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginVertical": 10,
+              "opacity": 1,
+              "paddingVertical": 10,
+            }
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 20,
+                  "borderWidth": 1,
+                  "height": 20,
+                  "marginRight": 10,
+                  "width": 20,
+                },
+                {
+                  "borderColor": "#011627",
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              [
+                {
+                  "fontSize": 20,
+                },
+                {
+                  "color": "#011627",
+                },
+              ]
+            }
+          >
+            dark
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "red",
+                "flex": 1,
+                "height": 1,
+              },
+              {
+                "backgroundColor": "#CCD2D7",
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginVertical": 10,
+              "opacity": 1,
+              "paddingVertical": 10,
+            }
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 20,
+                  "borderWidth": 1,
+                  "height": 20,
+                  "marginRight": 10,
+                  "width": 20,
+                },
+                {
+                  "borderColor": "#011627",
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              [
+                {
+                  "fontSize": 20,
+                },
+                {
+                  "color": "#011627",
+                },
+              ]
+            }
+          >
+            forest
+          </Text>
+        </View>
+      </View>
+    </RCTScrollView>
   </View>
 </View>
 `;

@@ -1,24 +1,27 @@
-/* Core */
-import { useContext, useState } from "react";
+/* src/app/screens/SignUp.screen.tsx */
+
+// ==================================================
+// Core
+// ==================================================
+import { useState } from "react";
 import {
   Image,
   KeyboardAvoidingView,
   Platform,
-  Pressable,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
   View,
 } from "react-native";
-//import React from "react";
 import * as Icons from "phosphor-react-native";
 import { Ionicons } from "@expo/vector-icons";
-//import { useHeaderHeight } from "@react-navigation/elements";
 
-/* Hooks */
+// ==================================================
+// Hooks
+// ==================================================
 
-/* Components */
+// ==================================================
+// Components
+// ==================================================
 import ThemedScreenWrapper from "#components/themed/ScreenWrapper";
 import ThemedView from "#components/themed/View";
 import ThemedText from "#components/themed/Text";
@@ -27,47 +30,90 @@ import ThemedButton from "#components/themed/Button";
 import LinkButton from "#components/LinkButton";
 import ErrorText from "#components/themed/ErrorText";
 
-/* Types */
+// ==================================================
+// Context
+// ==================================================
+import { useAuth } from "#store/Auth.context";
 
-/* Context */
-import { useAuth } from "#context/Auth.context";
-
-/* Constants */
+// ==================================================
+// Constants
+// ==================================================
 import { sizes, spacingY } from "#theme";
 
-/* Styles */
-
-/* Misc */
+// ==================================================
+// Utilities
+// ==================================================
 import {
   windowWidth as hScale,
   windowHeight as vScale,
 } from "#utils/ScreenDimensions";
 
+// ==================================================
+// Assets
+// ==================================================
 import { LogoImg } from "#theme/Images";
 
 /* this is temporary */
 import { useThemeColors } from "#hooks/useThemeColors";
 import { useCustomTheme, Themes } from "#context/Theme.context";
 
-const RegisterScreen = () => {
-  /* state to manage username */
+const SignUpScreen = () => {
+  // ==================================================
+  // State & Hooks
+  // ==================================================
+  /**
+   * Username state
+   * @type {[string, React.Dispatch<React.SetStateAction<string>>]}
+   */
   const [username, setUsername] = useState<string>("");
-  /* state to manage email input */
+  /**
+   * User email state
+   * @type {[string, React.Dispatch<React.SetStateAction<string>>]}
+   */
   const [email, setEmail] = useState<string>("");
-  /* state to manage password input */
+  /**
+   * User password state
+   * @type {[string, React.Dispatch<React.SetStateAction<string>>]}
+   */
   const [password, setPassword] = useState<string>("");
-  /* state to manage confirmed password input */
+  /**
+   * User confirm password state
+   * @type {[string, React.Dispatch<React.SetStateAction<string>>]}
+   */
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  /* state to toggle password visibility */
+  /**
+   * State to show/hide the user's password
+   * @type {[boolean, React.Dispatch<React.SetStateAction<boolean>>]}
+   */
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  /* state to toggle confirm password visibility */
+  /**
+   * State to show/hide the user's confirm password
+   * @type {[boolean, React.Dispatch<React.SetStateAction<boolean>>]}
+   */
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
 
-  /* Auth hook */
-  const auth = useAuth();
+  /* user authentication hook */
+  const { signUp, err } = useAuth();
   /* Theme colors hook */
   const { colors } = useThemeColors();
+
+  // ==================================================
+  // Handlers
+  // ==================================================
+
+  /**
+   * Handles the sign-up process
+   * @returns {Promise<User | null>}
+   */
+  const handleSignUp = async () => {
+    try {
+      return await signUp(username, email, password, confirmPassword);
+    } catch (error) {
+      console.error("~handleSignUp~ -> ", error);
+      return null;
+    }
+  };
 
   /* Toggle the visibility of the password input */
   const toggleShowPassword = () => {
@@ -77,10 +123,6 @@ const RegisterScreen = () => {
   /* Toggle the visibility of the confirm password input */
   const toggleShowConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
-  };
-
-  const handleOnRegister = () => {
-    console.log("Handle register");
   };
 
   return (
@@ -122,9 +164,11 @@ const RegisterScreen = () => {
             />
           }
           placeholder="Email"
-          autoCapitalize="none"
           value={email}
           onChangeText={setEmail}
+          textContentType="emailAddress"
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
 
         {/* Password input */}
@@ -139,10 +183,11 @@ const RegisterScreen = () => {
                 />
               }
               placeholder="Password"
-              autoCapitalize="none"
-              secureTextEntry={!showPassword}
               value={password}
               onChangeText={setPassword}
+              secureTextEntry={!showPassword}
+              textContentType="password"
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.iconContainer} testID="togglePwdIcon">
@@ -168,10 +213,11 @@ const RegisterScreen = () => {
                 />
               }
               placeholder="Confirm password"
-              autoCapitalize="none"
-              secureTextEntry={!showConfirmPassword}
               value={confirmPassword}
               onChangeText={setConfirmPassword}
+              secureTextEntry={!showConfirmPassword}
+              textContentType="password"
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.iconContainer} testID="toggleConfirmPwdIcon">
@@ -187,28 +233,25 @@ const RegisterScreen = () => {
 
         {/* Errors */}
         <View
-          style={
-            auth.err?.length == 0 ? { display: "none" } : { display: "flex" }
-          }
+          style={err?.length == 0 ? { display: "none" } : { display: "flex" }}
         >
-          {auth.err && <ErrorText>{auth.err}</ErrorText>}
+          {/* {err && <ErrorText>{err}</ErrorText>} */}
+          {err &&
+            err.map((item, index) => <ErrorText key={index}>{item}</ErrorText>)}
         </View>
 
         <ThemedButton
-          onPress={() =>
-            /* @ts-ignore */
-            auth.onRegister(username, email, password, confirmPassword)
-          }
+          onPress={() => signUp(username, email, password, confirmPassword)}
           size="medium"
           bordered={true}
         >
-          <Text>Register</Text>
+          <Text>Sign Up</Text>
         </ThemedButton>
 
         <View style={{ flexDirection: "row" }}>
           <ThemedText>Have an account? </ThemedText>
-          <LinkButton href="/">
-            <Text style={{ color: colors.color.text }}>Sign-in</Text>
+          <LinkButton href="/sign-in">
+            <Text style={{ color: colors.color.text }}>Sign In</Text>
           </LinkButton>
         </View>
       </KeyboardAvoidingView>
@@ -216,7 +259,7 @@ const RegisterScreen = () => {
   );
 };
 
-export default RegisterScreen;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,4 +1,8 @@
-/* Core */
+/* src/app/screens/SignIn.screen.tsx */
+
+// ==================================================
+// Core
+// ==================================================
 import React, { useState } from "react";
 import {
   Image,
@@ -8,18 +12,16 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
   ViewStyle,
 } from "react-native";
-import { useRouter } from "expo-router";
 import * as Icons from "phosphor-react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-/* Hooks */
-
-/* Components */
+// ==================================================
+// Components
+// ==================================================
 import ThemedScreenWrapper from "#components/themed/ScreenWrapper";
 import ThemedView from "#components/themed/View";
 import ThemedText from "#components/themed/Text";
@@ -28,17 +30,19 @@ import ThemedButton from "#components/themed/Button";
 import LinkButton from "#components/LinkButton";
 import ErrorText from "#components/themed/ErrorText";
 
-/* Types */
+// ==================================================
+// Context
+// ==================================================
+import { useAuth } from "#store/Auth.context";
 
-/* Context */
-import { useAuth } from "#context/Auth.context";
-
-/* Constants */
+// ==================================================
+// Constants
+// ==================================================
 import { sizes, spacingY } from "#theme";
 
-/* Styles */
-
-/* Misc */
+// ==================================================
+// Utilities
+// ==================================================
 import {
   windowWidth as hScale,
   windowHeight as vScale,
@@ -89,27 +93,58 @@ const Border = () => {
   );
 };
 
-const LoginScreen = () => {
-  /* state to manage email input */
+const SignInScreen = () => {
+  // ==================================================
+  // State & Hooks
+  // ==================================================
+  /**
+   * User email state
+   * @type {[string, React.Dispatch<React.SetStateAction<string>>]}
+   */
   const [email, setEmail] = useState<string>("");
-  /* state to manage password input */
+  /**
+   * User password state
+   * @type {[string, React.Dispatch<React.SetStateAction<string>>]}
+   */
   const [password, setPassword] = useState<string>("");
-  /* state to toggle password visibility */
+  /**
+   * State to show/hide the user's password
+   * @type {[boolean, React.Dispatch<React.SetStateAction<boolean>>]}
+   */
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  /* Auth hook */
-  const auth = useAuth();
+  /* user authentication hook */
+  const { signIn, err } = useAuth();
   /* Theme colors hook */
   const { colors } = useThemeColors();
-
+  /* Custom theme hook */
   const { theme, setTheme } = useCustomTheme();
 
-  const router = useRouter();
+  // ==================================================
+  // Handlers
+  // ==================================================
+
+  /**
+   * Handles the sign-in process
+   * @returns {Promise<User | null>}
+   */
+  const handleSignIn = async () => {
+    try {
+      return await signIn(email, password);
+    } catch (error) {
+      console.error("~handleSignIn~ -> ", error);
+      return null;
+    }
+  };
 
   /* Toggle the visibility of the password input */
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  // ==================================================
+  // Render
+  // ==================================================
 
   return (
     <ThemedScreenWrapper>
@@ -137,9 +172,11 @@ const LoginScreen = () => {
             />
           }
           placeholder="Email"
-          autoCapitalize="none"
           value={email}
           onChangeText={setEmail}
+          textContentType="emailAddress"
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
 
         {/* Password input */}
@@ -154,18 +191,20 @@ const LoginScreen = () => {
                 />
               }
               placeholder="Password"
-              autoCapitalize="none"
-              secureTextEntry={!showPassword}
               value={password}
               onChangeText={setPassword}
+              secureTextEntry={!showPassword}
+              textContentType="password"
+              autoCapitalize="none"
             />
           </View>
-          <View style={styles.iconContainer} testID="togglePwdIcon">
+          <View style={styles.iconContainer}>
             <Ionicons
               name={showPassword ? "eye-off-outline" : "eye-outline"}
               size={hScale(24)}
               color="#aaa"
               onPress={toggleShowPassword}
+              testID="togglePwdIcon"
             />
           </View>
         </View>
@@ -173,28 +212,24 @@ const LoginScreen = () => {
 
         {/* Errors */}
         <View
-          style={
-            auth.err?.length == 0 ? { display: "none" } : { display: "flex" }
-          }
+          style={err?.length == 0 ? { display: "none" } : { display: "flex" }}
         >
-          {auth.err && <ErrorText>{auth.err}</ErrorText>}
+          {err &&
+            err.map((item, index) => <ErrorText key={index}>{item}</ErrorText>)}
         </View>
 
         <ThemedButton
-          onPress={() =>
-            /* @ts-ignore */
-            auth.onLogin(email, password)
-          }
+          onPress={() => signIn(email, password)}
           size="medium"
           bordered={true}
         >
-          <Text>Sign-in</Text>
+          <Text>Sign In</Text>
         </ThemedButton>
 
         <View style={{ flexDirection: "row" }}>
           <ThemedText>Don't have an account? </ThemedText>
-          <LinkButton href="/register">
-            <Text style={{ color: colors.color.text }}>Sign-up</Text>
+          <LinkButton href="/sign-up">
+            <Text style={{ color: colors.color.text }}>Sign Up</Text>
           </LinkButton>
         </View>
 
@@ -217,7 +252,7 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default SignInScreen;
 
 const styles = StyleSheet.create({
   container: {

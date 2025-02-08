@@ -8,6 +8,7 @@
 // ==================================================
 import {
   createContext,
+  PropsWithChildren,
   ReactNode,
   useContext,
   useEffect,
@@ -18,7 +19,7 @@ import { User, onAuthStateChanged } from "firebase/auth";
 // ==================================================
 // Services
 // ==================================================
-import { login, logout, register } from "./Auth.service";
+import { login, logout, register, updateUserProfile } from "./Auth.service";
 
 // ==================================================
 // Configuration
@@ -64,8 +65,23 @@ interface AuthContextType {
    */
   signOut: () => void;
 
+  /**
+   * Update the user profile in Firebase.
+   * The physical image is stored in Firebase Storage,
+   * but the actual uri reference is stored in Firebase
+   * @param user
+   * @param username
+   * @param photoURL
+   * @returns
+   */
+  updateUserProfile: (
+    user: User,
+    username: string,
+    photoURL?: string | undefined
+  ) => Promise<void>;
+
   /** Currently authenticated user */
-  user: User | null;
+  user?: User;
 
   /** State for completion of authentication methods */
   initialized: boolean;
@@ -96,6 +112,7 @@ export const useAuth = () => {
     signUp: ctx.signUp,
     signIn: ctx.signIn,
     signOut: ctx.signOut,
+    updateUserProfile: ctx.updateUserProfile,
     initialized: ctx.initialized,
     err: ctx.err,
   };
@@ -112,6 +129,7 @@ export const useAuth = () => {
  * @returns {JSXElement}: Provider component
  */
 export function AuthContextProvider(props: { children: ReactNode }) {
+  //export const AuthContextProvider({children}: PropsWithChildren) => {
   // ==================================================
   // State & Hooks
   // ==================================================
@@ -119,7 +137,7 @@ export function AuthContextProvider(props: { children: ReactNode }) {
    * Current authenticated user state
    * @type {[User | null, React.Dispatch<React.SetStateAction<User | null>>]}
    */
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | undefined>(undefined);
   /**
    * Loading state for authentication methods
    * @type {[boolean, React.Dispatch<React.SetStateAction<boolean>>]}
@@ -147,8 +165,11 @@ export function AuthContextProvider(props: { children: ReactNode }) {
    */
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (user) => {
-      setUser(user);
-      setIsLoading(false);
+      if (user) {
+        setUser(user);
+        setIsLoading(false);
+      }
+
       setInitialized(true);
     });
 
@@ -180,7 +201,7 @@ export function AuthContextProvider(props: { children: ReactNode }) {
 
     try {
       const response = await login(email, password);
-      console.log(response);
+
       if (response) {
         if (response.user) {
           /* Successful sign-in, update the user state */
@@ -207,9 +228,12 @@ export function AuthContextProvider(props: { children: ReactNode }) {
         error.code === "auth/invalid-email"
       ) {
         setErr([...err, "Invalid credentials"]);
+      } else {
+        setErr([...err, error.response.data.msg]);
       }
 
-      setErr([...err, error.response.data.msg]);
+      /* response received */
+      setIsLoading(false);
       console.log("~handleSignIn error~ -> ", error.response.data.msg);
       return undefined;
     }
@@ -287,7 +311,12 @@ export function AuthContextProvider(props: { children: ReactNode }) {
         return undefined;
       }
     } catch (error: any) {
-      setErr([...err, error.response.data.msg]);
+      if (error.code === "auth/email-already-in-use") {
+        setErr([...err, "Email already in use."]);
+      } else {
+        setErr([...err, error.response.data.msg]);
+      }
+
       /* response received */
       setIsLoading(false);
       console.log("~handleSignUp error~ -> ", error.response.data.msg);
@@ -298,9 +327,41 @@ export function AuthContextProvider(props: { children: ReactNode }) {
   const handleSignOut = async () => {
     try {
       await logout();
-      setUser(null);
+      setUser(undefined);
     } catch (error) {
       console.log("~handleSignOut error~ -> ", error);
+    }
+  };
+
+  const handleUpdateUserProfile = async (
+    user: User,
+    username: string,
+    photoURL?: string | undefined
+  ) => {
+    /* clear any previous errors */
+    setErr([]);
+    /* awaiting response */
+    setIsLoading(true);
+
+    /**
+     * Data validation
+     */
+    /* field cannot be empty */
+    if (username == "") {
+      setErr([...err, "User name cannot be blank."]);
+      return;
+    }
+
+    try {
+      /* update the user profile */
+      const response = await updateUserProfile(user, username, photoURL);
+    } catch (error: any) {
+      /* response received */
+      setIsLoading(false);
+      console.log(
+        "~handleUpdateUserprofile error~ -> ",
+        error.response.data.msg
+      );
     }
   };
 
@@ -309,6 +370,7 @@ export function AuthContextProvider(props: { children: ReactNode }) {
     signUp: handleSignUp,
     signIn: handleSignIn,
     signOut: handleSignOut,
+    updateUserProfile: handleUpdateUserProfile,
     err: err,
     initialized: initialized,
   };

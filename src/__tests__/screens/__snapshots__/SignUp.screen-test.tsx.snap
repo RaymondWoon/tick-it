@@ -690,6 +690,7 @@ exports[`<SignUpScreen /> Renders SignUp screen correctly 1`] = `
             undefined,
           ]
         }
+        testID="sign-in"
       >
         <Text
           style={

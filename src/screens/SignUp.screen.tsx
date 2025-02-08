@@ -1,4 +1,4 @@
-/* src/app/screens/SignUp.screen.tsx */
+/* src/screens/SignUp.screen.tsx */
 
 // ==================================================
 // Core
@@ -131,6 +131,7 @@ const SignUpScreen = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
+        {/* Logo */}
         <ThemedView style={styles.logoContainer}>
           <Image
             source={LogoImg}
@@ -139,7 +140,10 @@ const SignUpScreen = () => {
             alt="logo"
           />
         </ThemedView>
+
+        {/* Title */}
         <ThemedText type="title">Tick-it</ThemedText>
+
         {/* Username input */}
         <ThemedInput
           icon={
@@ -154,6 +158,7 @@ const SignUpScreen = () => {
           value={username}
           onChangeText={setUsername}
         />
+
         {/* Email input */}
         <ThemedInput
           icon={
@@ -235,11 +240,11 @@ const SignUpScreen = () => {
         <View
           style={err?.length == 0 ? { display: "none" } : { display: "flex" }}
         >
-          {/* {err && <ErrorText>{err}</ErrorText>} */}
           {err &&
             err.map((item, index) => <ErrorText key={index}>{item}</ErrorText>)}
         </View>
 
+        {/* Sign-up button */}
         <ThemedButton
           onPress={() => signUp(username, email, password, confirmPassword)}
           size="medium"
@@ -248,9 +253,10 @@ const SignUpScreen = () => {
           <Text>Sign Up</Text>
         </ThemedButton>
 
+        {/* Link to sign in */}
         <View style={{ flexDirection: "row" }}>
           <ThemedText>Have an account? </ThemedText>
-          <LinkButton href="/sign-in">
+          <LinkButton href="/sign-in" testID="sign-in">
             <Text style={{ color: colors.color.text }}>Sign In</Text>
           </LinkButton>
         </View>

@@ -5,10 +5,11 @@
 // ==================================================
 import React, { useEffect } from "react";
 import { ActivityIndicator, View } from "react-native";
-import { Stack, useRouter, useSegments } from "expo-router";
+import { Slot, Stack, useRouter, useSegments } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // ==================================================
 // Context
@@ -74,7 +75,7 @@ function InitialLayout() {
     const inAuthGroup = segments[0] === "(auth)";
 
     if (user && !inAuthGroup) {
-      router.replace("/(auth)/(tabs)");
+      router.replace("/(auth)/(drawer)/(tabs)/home");
     } else if (!user && inAuthGroup) {
       router.replace("/");
     }
@@ -84,7 +85,7 @@ function InitialLayout() {
    * Show the activity indicator if waiting
    * on assets to be loaded or a response from the system
    */
-  if (!loaded || !initialized) {
+  if (!loaded) {
     return <ActivityIndicator size={"large"} />;
   }
 
@@ -99,11 +100,12 @@ function InitialLayout() {
   return (
     <>
       {initialized ? (
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="sign-in" />
-          <Stack.Screen name="sign-up" />
-          <Stack.Screen name="(auth)/(tabs)" />
-        </Stack>
+        // <Stack screenOptions={{ headerShown: false }}>
+        //   <Stack.Screen name="sign-in" />
+        //   <Stack.Screen name="sign-up" />
+        //   <Stack.Screen name="(auth)" />
+        // </Stack>
+        <Slot />
       ) : (
         <View style={{ flex: 1, justifyContent: "center" }}>
           <ActivityIndicator size="large" color="blue" />
@@ -125,7 +127,9 @@ const RootLayout = () => {
   return (
     <AuthContextProvider>
       <CustomThemeProvider>
-        <InitialLayout />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <InitialLayout />
+        </GestureHandlerRootView>
       </CustomThemeProvider>
     </AuthContextProvider>
   );

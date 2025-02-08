@@ -1,4 +1,4 @@
-/* src/app/screens/SignIn.screen.tsx */
+/* src/screens/SignIn.screen.tsx */
 
 // ==================================================
 // Core
@@ -124,19 +124,6 @@ const SignInScreen = () => {
   // Handlers
   // ==================================================
 
-  /**
-   * Handles the sign-in process
-   * @returns {Promise<User | null>}
-   */
-  const handleSignIn = async () => {
-    try {
-      return await signIn(email, password);
-    } catch (error) {
-      console.error("~handleSignIn~ -> ", error);
-      return null;
-    }
-  };
-
   /* Toggle the visibility of the password input */
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -152,6 +139,7 @@ const SignInScreen = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
+        {/* Logo */}
         <ThemedView style={styles.logoContainer}>
           <Image
             source={LogoImg}
@@ -160,7 +148,14 @@ const SignInScreen = () => {
             alt="logo"
           />
         </ThemedView>
-        <ThemedText type="title">Tick-it</ThemedText>
+
+        {/* Header Text */}
+        <View style={styles.titleContainer}>
+          {/* Title */}
+          <ThemedText type="title">Welcome to Tick-it</ThemedText>
+          {/* Subtitle */}
+          <ThemedText type="subtitle">The EZ task manager app</ThemedText>
+        </View>
 
         {/* Email input */}
         <ThemedInput
@@ -218,6 +213,7 @@ const SignInScreen = () => {
             err.map((item, index) => <ErrorText key={index}>{item}</ErrorText>)}
         </View>
 
+        {/* Sign-in button */}
         <ThemedButton
           onPress={() => signIn(email, password)}
           size="medium"
@@ -226,9 +222,10 @@ const SignInScreen = () => {
           <Text>Sign In</Text>
         </ThemedButton>
 
+        {/* Link to sign up */}
         <View style={{ flexDirection: "row" }}>
           <ThemedText>Don't have an account? </ThemedText>
-          <LinkButton href="/sign-up">
+          <LinkButton href="/sign-up" testID="sign-up">
             <Text style={{ color: colors.color.text }}>Sign Up</Text>
           </LinkButton>
         </View>
@@ -270,6 +267,9 @@ const styles = StyleSheet.create({
     width: vScale(100),
     height: vScale(100),
     backgroundColor: "transparent",
+  },
+  titleContainer: {
+    alignItems: "center",
   },
   passwordInputContainer: {
     flexDirection: "row",

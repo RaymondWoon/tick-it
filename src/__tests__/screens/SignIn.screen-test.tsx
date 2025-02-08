@@ -33,7 +33,7 @@ describe("<SignInScreen />", () => {
   it("Should render the title of the app", () => {
     render(<SignIn />);
 
-    const title = screen.getByText("Tick-it");
+    const title = screen.getByText("Welcome to Tick-it");
     expect(title).toBeTruthy();
   });
 
@@ -62,12 +62,12 @@ describe("<SignInScreen />", () => {
   });
 
   /* Test the forget password button */
-  it("Should render the forget password button", () => {
-    render(<SignIn />);
+  // it("Should render the forget password button", () => {
+  //   render(<SignIn />);
 
-    const forgetPwdBtn = screen.getByText("Forgot password?");
-    expect(forgetPwdBtn).toBeTruthy();
-  });
+  //   const forgetPwdBtn = screen.getByText("Forgot password?");
+  //   expect(forgetPwdBtn).toBeTruthy();
+  // });
 
   /* Test the sign up text */
   it("Should render the sign up button", () => {

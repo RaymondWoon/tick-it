@@ -1,8 +1,10 @@
+/* ./src/app/(auth)/(drawer)/(tabs)/_layout.tsx */
+
 /* Core */
-import { TouchableOpacity } from "react-native";
-import { Tabs } from "expo-router";
+import { Pressable, TouchableOpacity } from "react-native";
+import { Tabs, useNavigation, useRouter } from "expo-router";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
 
 /* Components */
 import LogoutBtn from "#components/LogoutBtn";
@@ -15,6 +17,7 @@ const TabsLayout = () => {
   const { signOut } = useAuth();
 
   const router = useRouter();
+  const navigation = useNavigation<DrawerNavigationProp<any>>();
 
   const handleSignOut = async () => {
     await signOut();
@@ -25,6 +28,14 @@ const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
+        headerLeft: () => (
+          <Pressable
+            onPress={() => navigation.openDrawer()}
+            style={{ marginLeft: 8 }}
+          >
+            <Ionicons name="menu" size={24} color={"#000"} />
+          </Pressable>
+        ),
         headerRight: () => (
           <TouchableOpacity
             onPressIn={handleSignOut}
@@ -35,8 +46,8 @@ const TabsLayout = () => {
         ),
       }}
     >
-      <Tabs.Screen name="index" options={{ tabBarLabel: "Home" }} />
-      <Tabs.Screen name="profile" options={{ tabBarLabel: "Profile" }} />
+      <Tabs.Screen name="home" options={{ tabBarLabel: "Home" }} />
+      <Tabs.Screen name="settings" options={{ tabBarLabel: "Settings" }} />
     </Tabs>
   );
 };

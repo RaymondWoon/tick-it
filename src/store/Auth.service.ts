@@ -8,14 +8,15 @@
 // Core
 // ==================================================
 import {
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signOut,
   updateProfile,
   User,
   UserCredential,
 } from "firebase/auth";
 import { FIREBASE_AUTH } from "#config/Firebase.config";
+import { uploadAvatarImage } from "./FirebaseStorage.service";
 
 // ==================================================
 // Types & Interfaces
@@ -95,3 +96,44 @@ export async function register(
     throw error;
   }
 }
+
+/**
+ *
+ * @param {User} user: Authenticated user
+ * @param {string} username: User's display name
+ * @param {string} photoURL: Image uri on the user's device.
+ * @returns {Promise<void>}
+ * @throws {Error} If update fails fails
+ */
+export async function updateUserProfile(
+  user: User,
+  username: string,
+  photoURL?: string | undefined
+): Promise<void> {
+  try {
+    const imageRef = photoURL
+      ? await uploadAvatarImage(user.uid, photoURL)
+      : null;
+
+    await updateProfile(user, { displayName: username, photoURL: imageRef });
+  } catch (error) {
+    console.log("~Service update profile error~ -> ", error);
+    throw error;
+  }
+}
+
+/* Not required createUserWithEmailAndPassword checks if email is already used */
+// export async function checkUserExistsByEmail(email: string): Promise<boolean> {
+//   try {
+//     const signInMethods = await fetchSignInMethodsForEmail(
+//       FIREBASE_AUTH,
+//       email
+//     );
+
+//     return signInMethods.length > 0;
+//   } catch (error) {
+//     console.log("~Service registration error~ -> ", error);
+//     return false;
+//     throw error;
+//   }
+// }

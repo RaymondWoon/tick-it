@@ -23,6 +23,14 @@ describe("<SignUpScreen />", () => {
     expect(title).toBeTruthy();
   });
 
+  /* Test the username input */
+  it("Should render the username input", () => {
+    render(<SignUp />);
+
+    const emailInput = screen.getByPlaceholderText("User name");
+    expect(emailInput).toBeTruthy();
+  });
+
   /* Test the email input */
   it("Should render the email input", () => {
     render(<SignUp />);

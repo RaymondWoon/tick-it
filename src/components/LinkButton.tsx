@@ -12,11 +12,12 @@ type LinkButtonProps = {
   href: string | "/";
   children: any | null;
   style?: TextStyle;
+  testID?: string;
 };
 
-const LinkButton = ({ href, children, style }: LinkButtonProps) => {
+const LinkButton = ({ href, children, style, testID }: LinkButtonProps) => {
   return (
-    <Link style={[styles.button, style]} href={href}>
+    <Link style={[styles.button, style]} href={href} testID={testID}>
       {children}
     </Link>
   );

@@ -8,6 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 /* Components */
 import LogoutBtn from "#components/LogoutBtn";
+import AvatarViewer from "#components/AvatarViewer";
 
 /* Context */
 //import { useAuth } from "#context/Auth.context";
@@ -46,8 +47,62 @@ const TabsLayout = () => {
         ),
       }}
     >
-      <Tabs.Screen name="home" options={{ tabBarLabel: "Home" }} />
-      <Tabs.Screen name="settings" options={{ tabBarLabel: "Settings" }} />
+      <Tabs.Screen
+        name="home"
+        options={{
+          tabBarLabel: "Home",
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "home" : "home-outline"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="tasks"
+        options={{
+          tabBarLabel: "Tasks",
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "list" : "list-outline"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="agenda"
+        options={{
+          tabBarLabel: "Agenda",
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "calendar" : "calendar-outline"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          tabBarLabel: "Settings",
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "settings" : "settings-outline"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Tabs>
   );
 };

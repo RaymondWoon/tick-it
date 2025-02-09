@@ -43,11 +43,7 @@ import {
   windowWidth as hScale,
   windowHeight as vScale,
 } from "#utils/ScreenDimensions";
-
-// ==================================================
-// Assets
-// ==================================================
-import { AvatarImg } from "#theme/Images";
+import { getProfileImage } from "#utils/Imageutils";
 
 const ProfileScreen = () => {
   // ==================================================
@@ -117,12 +113,9 @@ const ProfileScreen = () => {
     }
   };
 
-  const getProfileImage = (file: any) => {
-    if (file && typeof file == "string") return file;
-    if (file && typeof file == "object" && file.uri) return file.uri;
-
-    return AvatarImg;
-  };
+  // ==================================================
+  // Render
+  // ==================================================
 
   return (
     <ThemedScreenWrapper style={styles.container}>

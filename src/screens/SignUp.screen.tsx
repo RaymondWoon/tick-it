@@ -147,10 +147,10 @@ const SignUpScreen = () => {
         {/* Username input */}
         <ThemedInput
           icon={
-            <Icons.User
+            <Ionicons
+              name="person-outline"
               size={vScale(26)}
               color={colors.color.textSubtle}
-              weight="thin"
             />
           }
           placeholder="User name"
@@ -162,10 +162,10 @@ const SignUpScreen = () => {
         {/* Email input */}
         <ThemedInput
           icon={
-            <Icons.At
+            <Ionicons
+              name="at-outline"
               size={vScale(26)}
               color={colors.color.textSubtle}
-              weight="thin"
             />
           }
           placeholder="Email"
@@ -181,10 +181,10 @@ const SignUpScreen = () => {
           <View style={{ flex: 1 }}>
             <ThemedInput
               icon={
-                <Icons.LockSimple
+                <Ionicons
+                  name="lock-closed-outline"
                   size={vScale(26)}
                   color={colors.color.textSubtle}
-                  weight="thin"
                 />
               }
               placeholder="Password"
@@ -211,10 +211,10 @@ const SignUpScreen = () => {
           <View style={{ flex: 1 }}>
             <ThemedInput
               icon={
-                <Icons.Lock
+                <Ionicons
+                  name="lock-closed-outline"
                   size={vScale(26)}
                   color={colors.color.textSubtle}
-                  weight="thin"
                 />
               }
               placeholder="Confirm password"

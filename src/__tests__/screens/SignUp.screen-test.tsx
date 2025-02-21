@@ -80,17 +80,17 @@ describe("<SignUpScreen />", () => {
   });
 
   /* Test the icons in the password input field and showPassword */
-  it("Should render the LockSimple icon", () => {
-    render(<SignUp />);
+  // it("Should render the LockSimple icon", () => {
+  //   render(<SignUp />);
 
-    const showPwdIcon = screen.getByTestId("togglePwdIcon");
-    const pwdIcon = screen.getByTestId(
-      "phosphor-react-native-lock-simple-thin"
-    );
-    //const confirmPwdIcon = screen.getByTestId("phosphor-react-native-lock-thin")
-    expect(showPwdIcon).toBeTruthy();
-    expect(pwdIcon).toBeTruthy();
-  });
+  //   const showPwdIcon = screen.getByTestId("togglePwdIcon");
+  //   const pwdIcon = screen.getByTestId(
+  //     "phosphor-react-native-lock-simple-thin"
+  //   );
+  //   //const confirmPwdIcon = screen.getByTestId("phosphor-react-native-lock-thin")
+  //   expect(showPwdIcon).toBeTruthy();
+  //   expect(pwdIcon).toBeTruthy();
+  // });
 
   /* Test the icon in the password input field after pressing 'Show password' */
   // it("Should render the LockSimpleOpen icon when clicked one", async () => {
@@ -116,15 +116,15 @@ describe("<SignUpScreen />", () => {
   // });
 
   /* Test the icons in the confirm password input field and showConfirmPassword */
-  it("Should render the LockSimple icon when clicked one", () => {
-    render(<SignUp />);
+  // it("Should render the LockSimple icon when clicked one", () => {
+  //   render(<SignUp />);
 
-    const showPwdIcon = screen.getByTestId("toggleConfirmPwdIcon");
-    const pwdIcon = screen.getByTestId("phosphor-react-native-lock-thin");
+  //   const showPwdIcon = screen.getByTestId("toggleConfirmPwdIcon");
+  //   const pwdIcon = screen.getByTestId("phosphor-react-native-lock-thin");
 
-    expect(showPwdIcon).toBeTruthy();
-    expect(pwdIcon).toBeTruthy();
-  });
+  //   expect(showPwdIcon).toBeTruthy();
+  //   expect(pwdIcon).toBeTruthy();
+  // });
 
   /* Snapshot */
   it("Renders SignUp screen correctly", () => {

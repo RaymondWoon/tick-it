@@ -16,7 +16,6 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import * as Icons from "phosphor-react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 // ==================================================
@@ -160,10 +159,10 @@ const SignInScreen = () => {
         {/* Email input */}
         <ThemedInput
           icon={
-            <Icons.At
+            <Ionicons
+              name="at-outline"
               size={vScale(26)}
               color={colors.color.textSubtle}
-              weight="thin"
             />
           }
           placeholder="Email"
@@ -179,10 +178,10 @@ const SignInScreen = () => {
           <View style={{ flex: 1 }}>
             <ThemedInput
               icon={
-                <Icons.LockSimple
+                <Ionicons
+                  name="lock-closed-outline"
                   size={vScale(26)}
                   color={colors.color.textSubtle}
-                  weight="thin"
                 />
               }
               placeholder="Password"

@@ -12,7 +12,6 @@ import {
   Text,
   View,
 } from "react-native";
-import * as Icons from "phosphor-react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 // ==================================================
@@ -249,6 +248,7 @@ const SignUpScreen = () => {
           onPress={() => signUp(username, email, password, confirmPassword)}
           size="medium"
           bordered={true}
+          testID="signupBtn"
         >
           <Text>Sign Up</Text>
         </ThemedButton>
@@ -256,7 +256,7 @@ const SignUpScreen = () => {
         {/* Link to sign in */}
         <View style={{ flexDirection: "row" }}>
           <ThemedText>Have an account? </ThemedText>
-          <LinkButton href="/sign-in" testID="sign-in">
+          <LinkButton href="/sign-in" testID="signinBtn">
             <Text style={{ color: colors.color.text }}>Sign In</Text>
           </LinkButton>
         </View>

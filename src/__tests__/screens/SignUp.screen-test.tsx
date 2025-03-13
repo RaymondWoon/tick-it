@@ -1,134 +1,155 @@
-/* src/__tests__/screens/Register.screen-test.tsx
+/* src/__tests__/screens/Signup.screen-test.tsx */
 
-/* Core */
-import { render, screen } from "@testing-library/react-native";
+// ==================================================
+// Core
+// ==================================================
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react-native";
 
-/* Components */
+// ==================================================
+// Components
+// ==================================================
 import SignUp from "#app/sign-up";
+
+/* Cleanup after each test */
+afterEach(cleanup);
 
 describe("<SignUpScreen />", () => {
   /* Test the logo */
-  it("Should render the logo", () => {
-    render(<SignUp />);
+  it("Should render the logo", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
+    /* get a reference to the logo */
     const logo = screen.getByTestId("logo");
-    expect(logo).toBeTruthy();
+
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(logo).toBeOnTheScreen();
+    });
   });
 
   /* Test the application title */
-  it("Should render the title of the app", () => {
-    render(<SignUp />);
+  it("Should render the title of the app", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
+    /* get a reference to the title */
     const title = screen.getByText("Tick-it");
-    expect(title).toBeTruthy();
+
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(title).toBeOnTheScreen();
+    });
   });
 
   /* Test the username input */
-  it("Should render the username input", () => {
-    render(<SignUp />);
+  it("Should render the username input", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
-    const emailInput = screen.getByPlaceholderText("User name");
-    expect(emailInput).toBeTruthy();
+    /* get a reference to the username input */
+    const usernameInput = screen.getByPlaceholderText("User name");
+
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(usernameInput).toBeOnTheScreen();
+    });
   });
 
   /* Test the email input */
-  it("Should render the email input", () => {
-    render(<SignUp />);
+  it("Should render the email input", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
+    /* get a reference to the email input */
     const emailInput = screen.getByPlaceholderText("Email");
-    expect(emailInput).toBeTruthy();
+
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(emailInput).toBeOnTheScreen();
+    });
   });
 
   /* Test the password input */
-  it("Should render the password input", () => {
-    render(<SignUp />);
+  it("Should render the password input", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
+    /* get a reference to the password input */
     const passwordInput = screen.getByPlaceholderText("Password");
-    expect(passwordInput).toBeTruthy();
+
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(passwordInput).toBeOnTheScreen();
+    });
   });
 
-  /* Test the confirm password input */
-  it("Should render the confirm password input", () => {
-    render(<SignUp />);
+  /* Test the confirm_password input */
+  it("Should render the password input", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
-    const passwordInput = screen.getByPlaceholderText("Confirm password");
-    expect(passwordInput).toBeTruthy();
-  });
+    /* get a reference to the password input */
+    const confirmPasswordInput =
+      screen.getByPlaceholderText("Confirm password");
 
-  /* Test the register button */
-  it("Should render the the register button", () => {
-    render(<SignUp />);
-
-    const registerBtn = screen.getByText("Sign Up");
-    expect(registerBtn).toBeTruthy();
-  });
-
-  /* Test the sign-in text */
-  it("Should render the sign up button description", () => {
-    render(<SignUp />);
-
-    const signupBtn = screen.getByText("Have an account? ");
-    expect(signupBtn).toBeTruthy();
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(confirmPasswordInput).toBeOnTheScreen();
+    });
   });
 
   /* Test the sign-in button */
-  it("Should render the sign in button description", () => {
-    render(<SignUp />);
+  it("Should render the the sign-in button", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
-    const signinBtn = screen.getByText("Sign In");
-    expect(signinBtn).toBeTruthy();
+    /* get a reference to the SignIn button */
+    const signinBtn = screen.getByTestId("signupBtn");
+
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(signinBtn).toBeOnTheScreen();
+    });
   });
 
-  /* Test the icons in the password input field and showPassword */
-  // it("Should render the LockSimple icon", () => {
-  //   render(<SignUp />);
+  /* Test the sign in text */
+  it("Should render the sign up button", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
-  //   const showPwdIcon = screen.getByTestId("togglePwdIcon");
-  //   const pwdIcon = screen.getByTestId(
-  //     "phosphor-react-native-lock-simple-thin"
-  //   );
-  //   //const confirmPwdIcon = screen.getByTestId("phosphor-react-native-lock-thin")
-  //   expect(showPwdIcon).toBeTruthy();
-  //   expect(pwdIcon).toBeTruthy();
-  // });
+    /* get a reference to the SignIn button label */
+    const signinBtnLabel = screen.getByText("Have an account? ");
 
-  /* Test the icon in the password input field after pressing 'Show password' */
-  // it("Should render the LockSimpleOpen icon when clicked one", async () => {
-  //   render(<Register />);
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(signinBtnLabel).toBeOnTheScreen();
+    });
+  });
 
-  //   const user = userEvent.setup({
-  //     advanceTimers: jest.advanceTimersByTime,
-  //   });
+  /* Test the sign-in button */
+  it("Should render the sign up button", async () => {
+    /* render the SignIn page */
+    const page = render(<SignUp />);
 
-  //   jest.useFakeTimers();
+    /* get a reference to the SignUp button */
+    const signinBtn = screen.getByTestId("signinBtn");
 
-  //   const showPwdIcon = screen.getByTestId("showPwdIcon");
-
-  //   act(() => {
-  //     fireEvent.press(showPwdIcon);
-  //   });
-
-  //   const pwdIcon = screen.getByTestId(
-  //     "phosphor-react-native-lock-simple-open"
-  //   );
-
-  //   expect(pwdIcon).toBeTruthy();
-  // });
-
-  /* Test the icons in the confirm password input field and showConfirmPassword */
-  // it("Should render the LockSimple icon when clicked one", () => {
-  //   render(<SignUp />);
-
-  //   const showPwdIcon = screen.getByTestId("toggleConfirmPwdIcon");
-  //   const pwdIcon = screen.getByTestId("phosphor-react-native-lock-thin");
-
-  //   expect(showPwdIcon).toBeTruthy();
-  //   expect(pwdIcon).toBeTruthy();
-  // });
+    /* test to see if on screen */
+    await waitFor(() => {
+      expect(signinBtn).toBeOnTheScreen();
+    });
+  });
 
   /* Snapshot */
   it("Renders SignUp screen correctly", () => {
     const tree = render(<SignUp />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

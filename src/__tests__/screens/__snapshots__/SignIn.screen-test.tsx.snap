@@ -135,7 +135,6 @@ exports[`<SignInScreen /> Renders SignIn screen correctly 1`] = `
         ]
       }
     >
-      <Text />
       <TextInput
         autoCapitalize="none"
         icon={
@@ -198,7 +197,6 @@ exports[`<SignInScreen /> Renders SignIn screen correctly 1`] = `
             ]
           }
         >
-          <Text />
           <TextInput
             autoCapitalize="none"
             icon={
@@ -234,9 +232,7 @@ exports[`<SignInScreen /> Renders SignIn screen correctly 1`] = `
             "marginLeft": 21,
           }
         }
-      >
-        <Text />
-      </View>
+      />
     </View>
     <View
       style={
@@ -282,6 +278,7 @@ exports[`<SignInScreen /> Renders SignIn screen correctly 1`] = `
           "opacity": 1,
         }
       }
+      testID="signinBtn"
     >
       <View
         style={

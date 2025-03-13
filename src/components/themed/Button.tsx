@@ -31,6 +31,7 @@ interface ThemedButtonProps extends TouchableOpacityProps {
   onPress?: () => void;
   loading?: boolean;
   textStyle?: TextStyle;
+  testID?: string | undefined;
   children: ReactNode;
 }
 
@@ -44,6 +45,7 @@ const ThemedButton = ({
   onPress,
   loading = false,
   textStyle,
+  testID,
   children,
 }: ThemedButtonProps) => {
   const { colors } = useThemeColors();
@@ -66,7 +68,11 @@ const ThemedButton = ({
   };
 
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.button, style]}
+      testID={testID}
+    >
       <View
         style={[
           styles.button,

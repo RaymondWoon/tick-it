@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfileScreen /> Renders Profile screen correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "flex": 1,
+        "marginTop": 54,
+      },
+      {
+        "backgroundColor": "#FDFFFC",
+      },
+      {
+        "alignItems": "center",
+        "gap": 28.5,
+        "marginTop": 0,
+        "paddingHorizontal": 41.5,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "height": 381.5,
+          "paddingTop": 38,
+        },
+        {
+          "backgroundColor": "#FDFFFC",
+        },
+      ]
+    }
+  >
+    <ViewManagerAdapter_ExpoImage
+      backgroundColor={0}
+      borderRadius={191}
+      containerViewRef={"[React.ref]"}
+      contentFit="cover"
+      contentPosition={
+        {
+          "left": "50%",
+          "top": "50%",
+        }
+      }
+      height={381.5}
+      nativeViewRef={"[React.ref]"}
+      onError={[Function]}
+      onLoad={[Function]}
+      onLoadStart={[Function]}
+      onProgress={[Function]}
+      placeholder={[]}
+      source={
+        [
+          {
+            "testUri": "../../../assets/images/defaultAvatar.png",
+          },
+        ]
+      }
+      style={
+        {
+          "backgroundColor": "transparent",
+          "borderRadius": 191,
+          "height": 381.5,
+          "width": 416.5,
+        }
+      }
+      testID="avatar"
+      transition={null}
+      width={416.5}
+    />
+  </View>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#FDFFFC",
+          "height": 28.5,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "borderRadius": 30.5,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 21,
+          "height": 84,
+          "justifyContent": "center",
+          "paddingHorizontal": 31.5,
+        },
+        {
+          "borderColor": "#CCD2D7",
+        },
+      ]
+    }
+  >
+    <TextInput
+      autoCapitalize="none"
+      icon={
+        <Icon
+          allowFontScaling={false}
+          color="#AAB3BB"
+          name="person-outline"
+          size={49.5}
+        />
+      }
+      onChangeText={[Function]}
+      placeholder="User name"
+      placeholderTextColor="#aaa"
+      style={
+        [
+          {
+            "color": "#011627",
+            "flex": 1,
+            "fontSize": 37.5,
+          },
+        ]
+      }
+      value=""
+    />
+  </View>
+  <View
+    style={
+      {
+        "display": "flex",
+      }
+    }
+  />
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "borderCurve": "continuous",
+        "height": 91.5,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderCurve": "continuous",
+            "height": 91.5,
+            "justifyContent": "center",
+          },
+          false,
+          {
+            "backgroundColor": "#2EC4B6",
+            "borderRadius": 30.5,
+            "width": 976.5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontSize": 38,
+            },
+            {
+              "color": "#FCFCFD",
+            },
+          ]
+        }
+      >
+        <Text>
+          Pick an image
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "borderCurve": "continuous",
+        "height": 91.5,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderCurve": "continuous",
+            "height": 91.5,
+            "justifyContent": "center",
+          },
+          false,
+          {
+            "backgroundColor": "#2EC4B6",
+            "borderRadius": 30.5,
+            "width": 976.5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontSize": 38,
+            },
+            {
+              "color": "#FCFCFD",
+            },
+          ]
+        }
+      >
+        <Text>
+          Update profile
+        </Text>
+      </Text>
+    </View>
+  </View>
+</View>
+`;

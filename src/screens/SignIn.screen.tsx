@@ -217,6 +217,7 @@ const SignInScreen = () => {
           onPress={() => signIn(email, password)}
           size="medium"
           bordered={true}
+          testID="signinBtn"
         >
           <Text>Sign In</Text>
         </ThemedButton>

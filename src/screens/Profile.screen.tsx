@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import Spinner from "react-native-loading-spinner-overlay";
-import * as Icons from "phosphor-react-native";
+//import * as Icons from "phosphor-react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { ref } from "firebase/storage";
 
 // ==================================================
@@ -138,10 +139,15 @@ const ProfileScreen = () => {
       {/* Username input */}
       <ThemedInput
         icon={
-          <Icons.User
+          // <Icons.User
+          //   size={vScale(26)}
+          //   color={colors.color.textSubtle}
+          //   weight="thin"
+          // />
+          <Ionicons
+            name="person-outline"
             size={vScale(26)}
             color={colors.color.textSubtle}
-            weight="thin"
           />
         }
         placeholder="User name"

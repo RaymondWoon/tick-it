@@ -1,7 +1,7 @@
 /* src/screens/SignIn.screen.tsx */
 
 // ==================================================
-// Core
+// Core packages
 // ==================================================
 import React, { useState } from "react";
 import {

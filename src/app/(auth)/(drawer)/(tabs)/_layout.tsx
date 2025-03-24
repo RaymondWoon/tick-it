@@ -28,24 +28,24 @@ const TabsLayout = () => {
 
   return (
     <Tabs
-      screenOptions={{
-        headerLeft: () => (
-          <Pressable
-            onPress={() => navigation.openDrawer()}
-            style={{ marginLeft: 8 }}
-          >
-            <Ionicons name="menu" size={24} color={"#000"} />
-          </Pressable>
-        ),
-        headerRight: () => (
-          <TouchableOpacity
-            onPressIn={handleSignOut}
-            style={{ marginRight: 8 }}
-          >
-            <Ionicons name="log-out-outline" size={24} color={"#000"} />
-          </TouchableOpacity>
-        ),
-      }}
+    // screenOptions={{
+    //   headerLeft: () => (
+    //     <Pressable
+    //       onPress={() => navigation.openDrawer()}
+    //       style={{ marginLeft: 8 }}
+    //     >
+    //       <Ionicons name="menu" size={24} color={"#000"} />
+    //     </Pressable>
+    //   ),
+    //   headerRight: () => (
+    //     <TouchableOpacity
+    //       onPressIn={handleSignOut}
+    //       style={{ marginRight: 8 }}
+    //     >
+    //       <Ionicons name="log-out-outline" size={24} color={"#000"} />
+    //     </TouchableOpacity>
+    //   ),
+    // }}
     >
       <Tabs.Screen
         name="home"

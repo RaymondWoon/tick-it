@@ -49,7 +49,7 @@ exports[`<SignUpScreen /> Renders SignUp screen correctly 1`] = `
         alt="logo"
         source={
           {
-            "testUri": "../../../assets/images/tick-it-logo.png",
+            "testUri": "../../../src/assets/images/tick-it-logo.png",
           }
         }
         style={

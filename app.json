@@ -4,7 +4,7 @@
     "slug": "tick-it",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/tick-it-logo.png",
+    "icon": "./src/assets/images/tick-it-logo.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "scheme": "tick-it",

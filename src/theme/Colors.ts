@@ -1,9 +1,12 @@
 export const white = "#FDFFFC";
+export const black = "#000000";
 
 const Themes = {
   light: {
     dark: false,
     color: {
+      primary: "#1e88e5",
+      secondary: "#90caf9",
       text: "#011627",
       textSubtle: "#AAB3BB",
       textGreen: "#2EC4B6",
@@ -24,7 +27,7 @@ const Themes = {
       btnBgGreen: "#2EC4B6",
       btnTextGreen: "#F7FDFC",
 
-      primary: "#E71D36",
+      //primary: "#E71D36",
       card: "#FDFFFC",
     },
   },
@@ -52,6 +55,7 @@ const Themes = {
       btnTextGreen: "#FDFFFC",
 
       primary: "#FF9F1C",
+      secondary: "#FFECB3",
       card: "#011627",
     },
   },
@@ -79,6 +83,7 @@ const Themes = {
       btnTextGreen: "#FEFAE0",
 
       primary: "#BC6C25",
+      secondary: "#ffab91",
       card: "#283618",
     },
   },

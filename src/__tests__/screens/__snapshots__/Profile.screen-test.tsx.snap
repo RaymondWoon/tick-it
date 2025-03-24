@@ -56,7 +56,7 @@ exports[`<ProfileScreen /> Renders Profile screen correctly 1`] = `
       source={
         [
           {
-            "testUri": "../../../assets/images/defaultAvatar.png",
+            "testUri": "../../../src/assets/images/defaultAvatar.png",
           },
         ]
       }
